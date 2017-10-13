@@ -1,0 +1,175 @@
+<?php  
+ require_once("Rest.php");  
+ class Api extends Rest {  
+   const servidor = "localhost";
+    
+   const usuario_db = "root";  
+   const pwd_db = "Birlolo57521814";  
+   const nombre_db = "Arqui2";  
+   private $_conn = NULL;  
+   private $_metodo;  
+   private $_argumentos;  
+   public function __construct() {  
+     parent::__construct();  
+     $this->conectarDB();  
+   }  
+   private function conectarDB() {  
+     $dsn = 'mysql:dbname=' . self::nombre_db . ';host=' . self::servidor;  
+     try {  
+       $this->_conn = new PDO($dsn, self::usuario_db, self::pwd_db);  
+     } catch (PDOException $e) {  
+       echo 'Falló la conexión: ' . $e->getMessage();  
+     }  
+   }  
+   private function devolverError($id) {  
+     $errores = array(  
+       array('estado' => "error", "msg" => "petición no encontrada"),  
+       array('estado' => "error", "msg" => "petición no aceptada"),  
+       array('estado' => "error", "msg" => "petición sin contenido"),  
+       array('estado' => "error", "msg" => "email o password incorrectos"),  
+       array('estado' => "error", "msg" => "error borrando usuario"),  
+       array('estado' => "error", "msg" => "error actualizando nombre de usuario"),  
+       array('estado' => "error", "msg" => "error buscando usuario por email"),  
+       array('estado' => "error", "msg" => "error creando usuario"),  
+       array('estado' => "error", "msg" => "usuario ya existe")  
+     );  
+     return $errores[$id];  
+   }
+   public function procesarLLamada() {
+     if (isset($_REQUEST['url'])) {
+
+
+
+        $url_ = strtolower($_REQUEST['url']);
+        $comp1 = "getdata";
+        $comp2 = "setdata";
+        if($url_ == $comp1)
+        {
+            
+           $var = "ES GETDATA";
+            call_user_func(array($this,"getdata"));
+        }
+        elseif($url_ == $comp2)
+        {
+          // $var = "ES SETDATA";
+           // call_user_func_array(array($this,"saludo"),array($var));
+          
+          //$var = "ES SETDATA";
+            $luz_ = $_REQUEST['luz'];
+            $temp_ = $_REQUEST['temp'];
+            $hume_ = $_REQUEST['hume'];
+            $preci_ = $_REQUEST['preci'];
+             $array_ = array(0 =>$luz_ , 1 => $temp_, 2 => $hume_, 3 => $preci_);
+             call_user_func_array(array($this,"setdata"),$array_);
+        }
+        else
+        {
+          $var = "ES SALUDO";
+            call_user_func_array(array($this,"saludo"),array($var));
+           
+        }
+        
+      }
+      else
+      {
+          $url_ = "ESTUPIDFES";
+          call_user_func_array(array($this,"saludo"),array($url_));
+          //$this->mostrarRespuesta($this->convertirJson($this->devolverError(0)), 404);
+      }
+     
+       
+   }    
+     
+   private function convertirJson($data) {  
+     return json_encode($data);  
+   }  
+   private function saludo($para)
+  {
+    if ($_SERVER['REQUEST_METHOD']!= "GET"){
+        $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)),405);
+      }
+    $respuesta['estado'] = 'correcto';
+    $respuesta['saludo'] = 'Hola';
+    $respuesta['URL'] = $para; 
+    
+    $this->mostrarRespuesta($this->convertirJson($respuesta),200);
+      
+      
+  }
+
+  private function getdata() {  
+     if ($_SERVER['REQUEST_METHOD'] != "GET") {  
+       $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);  
+     }  
+     $query = $this->_conn->query("SELECT * FROM Data");  
+     $filas = $query->fetchAll(PDO::FETCH_ASSOC);  
+     $num = count($filas);  
+     if ($num > 0) {  
+       $respuesta['estado'] = 'correcto';  
+       $respuesta['Data'] = $filas;  
+       $this->mostrarRespuesta($this->convertirJson($respuesta), 200);  
+     }  
+     $this->mostrarRespuesta($this->devolverError(2), 204);  
+   }  
+
+
+  private function setdata($valluz,$valtemp,$valhume,$valpreci)
+  {
+    if ($_SERVER['REQUEST_METHOD']!= "POST"){
+        $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)),405);
+      }
+     $query = $this->_conn->prepare("INSERT INTO Data(fecha,luz,temp,humedad,precion)VALUES(NOW(),?,?,?,?);");
+     $query->bindValue(1,$valluz, PDO::PARAM_INT);
+     $query->bindValue(2, $valtemp, PDO::PARAM_INT);
+     $query->bindValue(3, $valhume, PDO::PARAM_INT);
+     $query->bindValue(4, $valpreci, PDO::PARAM_INT);
+     $query->execute();  
+       //rowcount para insert, delete. update  
+      // $filasBorradas = $query->rowCount();  
+       //if ($filasBorradas == 1) {  
+        $resp = array('estado' => "correcto", "para1" => $valluz,"para2" => $valtemp,"para3" => $valhume, "para4"=>$valpreci);  
+        $this->mostrarRespuesta($this->convertirJson($resp), 200);  
+       //} else {  
+        // $this->mostrarRespuesta($this->convertirJson($this->devolverError(4)), 400);  
+       //} 
+      
+      
+  }
+   
+     
+   private function crearUsuario() {  
+     if ($_SERVER['REQUEST_METHOD'] != "POST") {  
+       $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);  
+     }  
+     if (isset($this->datosPeticion['nombre'], $this->datosPeticion['email'], $this->datosPeticion['pwd'])) {  
+       $nombre = $this->datosPeticion['nombre'];  
+       $pwd = $this->datosPeticion['pwd'];  
+       $email = $this->datosPeticion['email'];  
+       if (!$this->existeUsuario($email)) {  
+         $query = $this->_conn->prepare("INSERT into usuario (nombre,email,password,fRegistro) VALUES (:nombre, :email, :pwd, NOW())");  
+         $query->bindValue(":nombre", $nombre);  
+         $query->bindValue(":email", $email);  
+         $query->bindValue(":pwd", sha1($pwd));  
+         $query->execute();  
+         if ($query->rowCount() == 1) {  
+           $id = $this->_conn->lastInsertId();  
+           $respuesta['estado'] = 'correcto';  
+           $respuesta['msg'] = 'usuario creado correctamente';  
+           $respuesta['usuario']['id'] = $id;  
+           $respuesta['usuario']['nombre'] = $nombre;  
+           $respuesta['usuario']['email'] = $email;  
+           $this->mostrarRespuesta($this->convertirJson($respuesta), 200);  
+         }  
+         else  
+           $this->mostrarRespuesta($this->convertirJson($this->devolverError(7)), 400);  
+       }  
+       else  
+         $this->mostrarRespuesta($this->convertirJson($this->devolverError(8)), 400);  
+     } else {  
+       $this->mostrarRespuesta($this->convertirJson($this->devolverError(7)), 400);  
+     }  
+   }  
+ }  
+ $api = new Api();  
+ $api->procesarLLamada();
+ ?>
