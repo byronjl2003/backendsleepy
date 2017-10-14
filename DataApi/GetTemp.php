@@ -1,6 +1,6 @@
 <?php
- require_once("Rest.php");
- class Api extends Rest {
+  require_once("Rest.php");
+  class Api extends Rest {
    const servidor = "localhost";
    const usuario_db = "root";
    const pwd_db = "Birlolo57521814";
@@ -64,8 +64,9 @@
      if ($_SERVER['REQUEST_METHOD'] != "GET") {
        $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
      }
-     //$query = $this->_conn->query("SELECT * FROM data2");
-     $this->_conn->exect("call gettemp('byronjl2003@gmail.com',@out)");
+
+     $query = $this->_conn->query("call gettemp('byronjl2003@gmail.com',@out)");
+     //$this->_conn->exect("call gettemp('byronjl2003@gmail.com',@out)");
      $query = $this->_conn->query("SELECT @out");
      $filas = $query->fetchAll(PDO::FETCH_ASSOC);
      $num = count($filas);
