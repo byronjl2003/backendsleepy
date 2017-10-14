@@ -36,7 +36,7 @@
    }
    public function procesarLLamada() {
 
-     call_user_func(array($this,"saludo"));;
+     call_user_func(array($this,"gettemp"));
 
 
 
