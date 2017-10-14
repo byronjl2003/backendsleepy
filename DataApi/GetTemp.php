@@ -66,6 +66,7 @@
      }
      //$query = $this->_conn->query("SELECT * FROM data2");
      $this->_conn->exect("call gettemp('byronjl2003@gmail.com',@out)");
+     $query = $this->_conn->query("SELECT @out");
      $filas = $query->fetchAll(PDO::FETCH_ASSOC);
      $num = count($filas);
      if ($num > 0) {
