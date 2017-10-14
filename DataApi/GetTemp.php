@@ -83,11 +83,11 @@
      $query->bindValue(":email", $email);
      $query->bindValue(":pwd", sha1($pwd));
      $query->bindValue(1,'byronjl2003@gmail.com', PDO::PARAM_STR);
-     //$query->execute();
+     $query->execute();
      $filas = $query->fetchAll(PDO::FETCH_ASSOC);
      $num = count($filas);
      if ($num > 0) {
-       $respuesta['Data'] = $filas;  
+       $respuesta['Data'] = $filas;
        $this->mostrarRespuesta($this->convertirJson($respuesta), 200);
      }
      $this->mostrarRespuesta($this->devolverError(2), 204);
