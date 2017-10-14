@@ -67,21 +67,8 @@
      /*
      select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = 'byronjl2003@gmail.com') T ORDER BY T.fecha DESC LIMIT 1;
      */
-     //$query = $this->_conn->query("call gettemp('byronjl2003@gmail.com',@out)");
-     //$this->_conn->exect("call gettemp('byronjl2003@gmail.com',@out)");
-    // $query = $this->_conn->query("SELECT @out");
-     //$filas = $query->fetchAll(PDO::FETCH_ASSOC);
-     //$num = count($filas);
-     //if ($num > 0) {
-       //$respuesta['Data'] = $filas;
-       //$this->mostrarRespuesta($this->convertirJson($respuesta), 200);
-     //}
-     //$this->mostrarRespuesta($this->devolverError(2), 204);
-
+     
      $query = $this->_conn->prepare("select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = ?) T ORDER BY T.fecha DESC LIMIT 1;");
-     $query->bindValue(":nombre", $nombre);
-     $query->bindValue(":email", $email);
-     $query->bindValue(":pwd", sha1($pwd));
      $query->bindValue(1,'byronjl2003@gmail.com', PDO::PARAM_STR);
      $query->execute();
      $filas = $query->fetchAll(PDO::FETCH_ASSOC);
