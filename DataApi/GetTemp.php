@@ -36,7 +36,11 @@
    }
    public function procesarLLamada() {
 
-     call_user_func(array($this,"gettemp"));
+     $email_ = $_REQUEST['email'];
+     $array_ = array(0 =>$email_);
+     call_user_func_array(array($this,"gettemp"),$array_);
+
+     //call_user_func(array($this,"gettemp"));
 
 
 
@@ -60,16 +64,16 @@
   }
 
 
-  private function gettemp() {
+  private function gettemp($email) {
      if ($_SERVER['REQUEST_METHOD'] != "GET") {
        $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
      }
      /*
      select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = 'byronjl2003@gmail.com') T ORDER BY T.fecha DESC LIMIT 1;
      */
-     
+
      $query = $this->_conn->prepare("select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = ?) T ORDER BY T.fecha DESC LIMIT 1;");
-     $query->bindValue(1,'byronjl2003@gmail.com', PDO::PARAM_STR);
+     $query->bindValue(1,$email, PDO::PARAM_STR);
      $query->execute();
      $filas = $query->fetchAll(PDO::FETCH_ASSOC);
      $num = count($filas);
@@ -80,48 +84,8 @@
      $this->mostrarRespuesta($this->devolverError(2), 204);
    }
 
- private function getinfo($cant)
- {
-
-   if($_SERVER['REQUEST_METHOD']!= "GET"){
-   	$this->mostrarRespuesta($this->convertirJson($this->devolverError(1)),405);
-    }
 
 
-
-   $query =  $this->_conn->prepare("SELECT * FROM Data ORDER BY fecha DESC LIMIT 10 ;");
-  // $query->bindValue(1,$cant,PDO::PARAM_INT);
-  $query->execute(array($cant));
-  $filas = $query->fetchAll(PDO::FETCH_ASSOC);
-  //  $respuesta['Data'] = $filas;
-
-  // $this->mostrarRespuesta($this->convertirJson($respuesta),200);
-   $array_  =  array("varCant" => $cant,"Data"=> $filas);
-   $this->mostrarRespuesta($this->convertirJson($array_),200);
-
-
- }
-  private function setdata($cord1,$cord2,$ppm)
-  {
-    if ($_SERVER['REQUEST_METHOD']!= "POST"){
-        $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)),405);
-      }
-     $query = $this->_conn->prepare("INSERT INTO data2(fecha,cord1,cord2,ppm)VALUES(NOW()-INTERVAL 6 HOUR,?,?,?);");
-     $query->bindValue(1,$cord1, PDO::PARAM_INT);
-     $query->bindValue(2, $cord2, PDO::PARAM_INT);
-     $query->bindValue(3, $ppm, PDO::PARAM_INT);
-     $query->execute();
-       //rowcount para insert, delete. update
-      // $filasBorradas = $query->rowCount();
-       //if ($filasBorradas == 1) {
-        $resp = array('estado' => "correcto", "para1" => $cord1,"para2" => $cord2,"para3" => $ppm);
-        $this->mostrarRespuesta($this->convertirJson($resp), 200);
-       //} else {
-        // $this->mostrarRespuesta($this->convertirJson($this->devolverError(4)), 400);
-       //}
-
-
-  }
 
  }
  $api = new Api();
