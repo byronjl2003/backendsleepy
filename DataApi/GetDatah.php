@@ -52,7 +52,7 @@
      return json_encode($data);
    }
 
-  private function getdatah($email,$email1,$email2) {
+  private function getdatah($email,$fecha1,$fecha2) {
      if ($_SERVER['REQUEST_METHOD'] != "GET") {
        $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
      }
@@ -60,7 +60,7 @@
      select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = 'byronjl2003@gmail.com') T ORDER BY T.fecha DESC LIMIT 1;
      */
 
-     $query = $this->_conn->prepare("select T.temperatura,T.humedad,T.movimiento,T.luz,T.sonido,T.ronquido FROM(select D.fecha,D.temperatura,D.humedad,D.movimiento,D.luz,D.sonido,D.ronquido FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = ?) T WHERE T.fecha BETWEEN ? AND ? ORDER BY T.fecha ASC");
+     $query = $this->_conn->prepare("select T.temperatura,T.humedad,T.movimiento,T.luz,T.sonido,T.ronquido FROM(select D.fecha,D.temperatura,D.humedad,D.movimiento,D.luz,D.sonido,D.ronquido FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = ?) T WHERE T.fecha BETWEEN ? AND ? ORDER BY T.fecha ASC;");
      $query->bindValue(1,$email, PDO::PARAM_STR);
      $query->bindValue(2,$fecha1, PDO::PARAM_STR);
      $query->bindValue(3,$fecha2, PDO::PARAM_STR);
