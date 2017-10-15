@@ -71,6 +71,6 @@
    }
 
  }
- $api = new Api();
+ $api = new GetTemp();
  $api->procesarLLamada();
  ?>

@@ -71,6 +71,6 @@
    }
 
  }
- $api = new Api();
+ $api = new GetSonido();
  $api->procesarLLamada();
  ?>
