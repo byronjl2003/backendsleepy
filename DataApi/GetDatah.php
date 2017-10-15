@@ -65,7 +65,7 @@
      $query->bindValue(2,$fecha1, PDO::PARAM_STR);
      $query->bindValue(3,$fecha2, PDO::PARAM_STR);
      $query->execute();
-     $filas = $query->fetchAll(PDO::FETCH_ASSOC);SS
+     $filas = $query->fetchAll(PDO::FETCH_ASSOC);
      $num = count($filas);
      if ($num > 0) {
        $respuesta['Data'] = $filas;
