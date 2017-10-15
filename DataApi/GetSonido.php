@@ -1,6 +1,6 @@
 <?php
   require_once("Rest.php");
-  class GetTemp extends Rest {
+  class GetSonido extends Rest {
    const servidor = "localhost";
    const usuario_db = "root";
    const pwd_db = "Birlolo57521814";
@@ -38,7 +38,7 @@
 
      $email_ = $_REQUEST['email'];
      $array_ = array(0 =>$email_);
-     call_user_func_array(array($this,"gettemp"),$array_);
+     call_user_func_array(array($this,"getsonido"),$array_);
 
      //call_user_func(array($this,"gettemp"));
 
@@ -50,7 +50,7 @@
      return json_encode($data);
    }
 
-  private function gettemp($email) {
+  private function getsonido($email) {
      if ($_SERVER['REQUEST_METHOD'] != "GET") {
        $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
      }
@@ -58,7 +58,7 @@
      select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = 'byronjl2003@gmail.com') T ORDER BY T.fecha DESC LIMIT 1;
      */
 
-     $query = $this->_conn->prepare("select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = ?) T ORDER BY T.fecha DESC LIMIT 1;");
+     $query = $this->_conn->prepare("select T.sonido FROM(select D.fecha,D.sonido FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = ?) T ORDER BY T.fecha DESC LIMIT 1;");
      $query->bindValue(1,$email, PDO::PARAM_STR);
      $query->execute();
      $filas = $query->fetchAll(PDO::FETCH_ASSOC);
