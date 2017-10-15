@@ -1,6 +1,6 @@
 <?php
   require_once("Rest.php");
-  class GetTemph extends Rest {
+  class GetTemperaturah extends Rest {
    const servidor = "localhost";
    const usuario_db = "root";
    const pwd_db = "Birlolo57521814";
@@ -75,6 +75,6 @@
    }
 
  }
- $api = new GetTemph();
+ $api = new GetTemperaturah();
  $api->procesarLLamada();
  ?>
