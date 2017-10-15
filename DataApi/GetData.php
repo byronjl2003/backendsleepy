@@ -1,6 +1,6 @@
 <?php
   require_once("Rest.php");
-  class GetTemph extends Rest {
+  class GetData extends Rest {
    const servidor = "localhost";
    const usuario_db = "root";
    const pwd_db = "Birlolo57521814";
@@ -38,7 +38,7 @@
 
      $email_ = $_REQUEST['email'];
      $array_ = array(0 =>$email_);
-     call_user_func_array(array($this,"gettemp"),$array_);
+     call_user_func_array(array($this,"getdata"),$array_);
 
      //call_user_func(array($this,"gettemp"));
 
@@ -50,7 +50,7 @@
      return json_encode($data);
    }
 
-  private function gettemp($email) {
+  private function getdata($email) {
      if ($_SERVER['REQUEST_METHOD'] != "GET") {
        $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
      }
@@ -58,7 +58,7 @@
      select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = 'byronjl2003@gmail.com') T ORDER BY T.fecha DESC LIMIT 1;
      */
 
-     $query = $this->_conn->prepare("select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = ?) T ORDER BY T.fecha DESC LIMIT 1;");
+     $query = $this->_conn->prepare("select T.temperatura,T.humedad,T.movimiento,T.luz,T.sonido,T.ronquido FROM(select D.fecha,D.temperatura,D.humedad,D.movimiento,D.luz,D.sonido,D.ronquido FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = ?) T ORDER BY T.fecha DESC LIMIT 1;");
      $query->bindValue(1,$email, PDO::PARAM_STR);
      $query->execute();
      $filas = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -71,6 +71,6 @@
    }
 
  }
- $api = new GetTemph();
+ $api = new GetData();
  $api->procesarLLamada();
  ?>
