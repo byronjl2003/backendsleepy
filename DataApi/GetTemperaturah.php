@@ -37,8 +37,10 @@
    public function procesarLLamada() {
 
      $email_ = $_REQUEST['email'];
-     $array_ = array(0 =>$email_);
-     call_user_func_array(array($this,"gettemp"),$array_);
+     $fecha1_ = $_REQUEST['fecha1'];
+     $fecha2_ = $_REQUEST['fecha2'];
+     $array_ = array(0 =>$email_,1 =>$fecha1_,2 =>$fecha2_);
+     call_user_func_array(array($this,"gettemph"),$array_);
 
      //call_user_func(array($this,"gettemp"));
 
@@ -50,7 +52,7 @@
      return json_encode($data);
    }
 
-  private function gettemp($email) {
+  private function gettemph($email,$fecha1,$fecha2) {
      if ($_SERVER['REQUEST_METHOD'] != "GET") {
        $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
      }
@@ -58,8 +60,10 @@
      select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = 'byronjl2003@gmail.com') T ORDER BY T.fecha DESC LIMIT 1;
      */
 
-     $query = $this->_conn->prepare("select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = ?) T ORDER BY T.fecha DESC LIMIT 1;");
+     $query = $this->_conn->prepare("select T.fecha,T.temperatura FROM (select D.fecha,D.temperatura FROM master_det M 	INNER JOIN data D ON M.id = D.id WHERE M.correo = ? ) T WHERE T.fecha BETWEEN ? AND ?  ORDER BY T.fecha ASC; ");
      $query->bindValue(1,$email, PDO::PARAM_STR);
+     $query->bindValue(2,$fecha1, PDO::PARAM_STR);
+     $query->bindValue(3,$fecha2, PDO::PARAM_STR);
      $query->execute();
      $filas = $query->fetchAll(PDO::FETCH_ASSOC);
      $num = count($filas);
