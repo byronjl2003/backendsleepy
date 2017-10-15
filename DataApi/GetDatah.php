@@ -48,11 +48,11 @@
 
    }
 
-   private function convertirJson($data,$email1,$email2) {
+   private function convertirJson($data) {
      return json_encode($data);
    }
 
-  private function getdatah($email) {
+  private function getdatah($email,$email1,$email2) {
      if ($_SERVER['REQUEST_METHOD'] != "GET") {
        $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
      }
@@ -70,7 +70,7 @@
      if ($num > 0) {
        $respuesta['Data'] = $filas;
        $this->mostrarRespuesta($this->convertirJson($respuesta), 200);
-     }
+     }ye
      $this->mostrarRespuesta($this->devolverError(2), 204);
    }
 
