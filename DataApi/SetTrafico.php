@@ -55,11 +55,11 @@
      if ($_SERVER['REQUEST_METHOD'] != "POST") {
        $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
      }
-     $query = $this->_conn->prepare("INSERT INTO datatrafic(fecha,cord1,cord2)VALUES(NOW()-INTERVAL 6 HOUR,?,?);");
+     $query = $this->_conn->prepare("INSERT INTO datatrafic(fecha,cord1,cord2)VALUES(NOW()-INTERVAL 6 HOUR,?,?)");
      $query->bindValue(1,$cord1, PDO::PARAM_INT);
      $query->bindValue(2, $cord2, PDO::PARAM_INT);
      $query->execute();
-        $resp = array('estado' => "correcto");
+        $resp = array('estado' => "correcto",'cord2'=> $cord2);
         $this->mostrarRespuesta($this->convertirJson($resp), 200);
 
    }
