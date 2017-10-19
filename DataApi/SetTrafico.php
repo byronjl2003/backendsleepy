@@ -52,7 +52,7 @@
    }
 
   private function settrafico($cord1,$cord2) {
-     if ($_SERVER['REQUEST_METHOD'] != "GET") {
+     if ($_SERVER['REQUEST_METHOD'] != "POST") {
        $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
      }
      $query = $this->_conn->prepare("INSERT INTO datatrafic(fecha,cord1,cord2)VALUES(NOW()-INTERVAL 6 HOUR,?,?);");
