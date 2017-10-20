@@ -107,7 +107,7 @@ http://maps.googleapis.com/maps/api/distancematrix/json?parameters
         var myLatLng = {lat: 14.589377, lng: -90.551430};
 
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
+          zoom: 9,
           center: myLatLng
         });
 
