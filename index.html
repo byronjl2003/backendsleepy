@@ -49,26 +49,7 @@
   <div class="container">
     <div class="col-md-10 col-md-offset-1 text-center" id="map">
       <p>Descripcion......</p>
-      <script>
 
-        function initMap() {
-          var myLatLng = {lat: -25.363, lng: 131.044};
-
-          var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 4,
-            center: myLatLng
-          });
-
-          var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            title: 'Hello World!'
-          });
-        }
-      </script>
-      <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjptyNKD76g3d4w6-oyBegeXphPsNUx84&callback=initMap">
-      </script>
     </div>
   </div>
 </section>
@@ -163,7 +144,7 @@
   </div>
 </section>
 <!-- hire me section -->
-<!-- footer -->
+<!-- footer
 <footer class="section footer">
   <div class="footer-bottom">
     <div class="container">
@@ -184,7 +165,29 @@
     </div>
   </div>
 </footer>
-<!-- footer -->
+
+-->
+<div id="map"></div>
+<script>
+
+  function initMap() {
+    var myLatLng = {lat: -25.363, lng: 131.044};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 4,
+      center: myLatLng
+    });
+
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'Hello World!'
+    });
+  }
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjptyNKD76g3d4w6-oyBegeXphPsNUx84&callback=initMap">
+</script>
 
 <!-- JS FILES -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
