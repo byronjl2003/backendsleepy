@@ -5,20 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Simple markers</title>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height:50%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
 
@@ -27,24 +14,7 @@
 
     </script>
 
-    <script>
-      function initMap() {
-        var uluru = {lat: 14.589453, lng: -90.55138};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-    </script>
-
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjptyNKD76g3d4w6-oyBegeXphPsNUx84&callback=initMap">
-    </script>
-    <script src="js/jquery.min.js"></script>
+    
   </head>
   <body>
     <div id="map"></div>
