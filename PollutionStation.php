@@ -106,26 +106,6 @@ http://maps.googleapis.com/maps/api/distancematrix/json?parameters
   </head>
   <body>
     <div id="map"></div>
-    <script>
-
-      function initMap() {
-        var myLatLng = {lat: 14.589377, lng: -90.551430};
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 9,
-          center: myLatLng
-        });
-
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!'
-        });
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjptyNKD76g3d4w6-oyBegeXphPsNUx84&callback=initMap">
-    </script>
-    <script src="js/scripts.js"></script>
+        <script src="js/scripts.js"></script>
   </body>
 </html>
