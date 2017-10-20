@@ -59,7 +59,7 @@
     */
 
 
-    $query = $this->_conn->prepare("select fecha,cord1,cord2 from data2 where fecha between '2017-10-17' and '2017-10-18'");
+    $query = $this->_conn->prepare("select cord1,cord2 from data2 where fecha between '2017-10-17' and '2017-10-18'");
     //$query->bindValue(1,$email, PDO::PARAM_STR)
     //$query->bindValue(2,$fecha1, PDO::PARAM_STR);
     //$query->bindValue(3,$fecha2, PDO::PARAM_STR);
