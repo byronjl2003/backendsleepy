@@ -106,6 +106,6 @@ http://maps.googleapis.com/maps/api/distancematrix/json?parameters
   </head>
   <body>
     <div id="map"></div>
-        <script src="js/scripts.js"></script>
+    
   </body>
 </html>
