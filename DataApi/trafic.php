@@ -6,9 +6,7 @@
 
 <p>My first paragraph.</p>
 
-<iframe width="420" height="315"
-src="https://youtu.be/LnS_dUWQk5w">
-</iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LnS_dUWQk5w" frameborder="0" allowfullscreen></iframe>
 
 </body>
 </html>
