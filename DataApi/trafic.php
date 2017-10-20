@@ -71,7 +71,7 @@ http://maps.googleapis.com/maps/api/distancematrix/json?parameters
       }
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjptyNKD76g3d4w6-oyBegeXphPsNUx84&callback=initMap">
     </script>
   </body>
 </html>
