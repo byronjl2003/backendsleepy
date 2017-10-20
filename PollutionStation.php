@@ -89,7 +89,7 @@ http://maps.googleapis.com/maps/api/distancematrix/json?parameters
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
+        height:50%;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
