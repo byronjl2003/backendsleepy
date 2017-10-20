@@ -9,6 +9,10 @@
        }
     </style>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>
+      alert("HOLAAA");
+    </script>
+    
   </head>
   <body>
     <h3>My Google Maps Demo</h3>
@@ -29,15 +33,7 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjptyNKD76g3d4w6-oyBegeXphPsNUx84&callback=initMap">
     </script>
-    <script type="text/javascript">
-      var xhttp = new XMLHttpRequest();
-      xhttp.open("GET", "", true);
-      xhttp.setRequestHeader("Content-type", "application/json");
-      xhttp.send();
-      var response = JSON.parse(xhttp.responseText);
-      $('#divjson').html(data);
-      alert(response);
-    </script>
+
     <div id="divjson">
     </div>
 
