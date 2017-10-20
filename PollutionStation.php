@@ -98,6 +98,11 @@ http://maps.googleapis.com/maps/api/distancematrix/json?parameters
         padding: 0;
       }
     </style>
+    <script>
+    $(document).ready(function() {
+        alert("HOLA DESDE EL DOCUMENTO");
+    });
+    </script>
   </head>
   <body>
     <div id="map"></div>
