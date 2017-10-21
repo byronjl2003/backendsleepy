@@ -257,7 +257,6 @@ function walk(obj) {
         {
           console.log("es un lat");
           var val = obj[key];
-          cord1 = val;
           console.log(cord1);
           walk(val);
         }
@@ -269,6 +268,7 @@ function walk(obj) {
           //var latLng = new google.maps.LatLng(14.643002,-90.5602);
           //var marker = new google.maps.Marker({
             //position: latLng,
+            cord1 = val;
             //map: map
           //});
           //console.log(val);
