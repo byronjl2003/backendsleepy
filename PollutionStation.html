@@ -103,7 +103,12 @@ function walk(obj) {
 
 }
 walk(obj);
-
+var latLng = new google.maps.LatLng(14.643002,-90.5602);
+var marker = new google.maps.Marker({
+  position: latLng,
+  map: map
+});
+/*
 window.eqfeed_callback = function(results) {
   for (var i = 0; i < results.features.length; i++) {
     var coords = results.features[i].geometry.coordinates;
@@ -114,6 +119,7 @@ window.eqfeed_callback = function(results) {
     });
   }
 }
+*/
 
 //console.log("entero: "+entero);
 //console.log("entero2: "+entero2);
