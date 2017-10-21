@@ -67,26 +67,24 @@ walk(obj);
 */
 
       var obj = {a: {aa:14.643002, ba:-90.5602},c: {ca:14.637345,cb:-90.54593}};
-      var entero =0;
-      var entero2 =0;
+      //var entero =0;
+      //var entero2 =0;
       var keyglobal;
 function walk(obj) {
 
   console.log("ENTRO!")
   for (var key in obj) {
       console.log("key:"+key);
-      entero = entero+1;
+      //entero = entero+1;
       if (obj.hasOwnProperty(key)) {
       var val = obj[key];
       console.log(val);
       walk(val);
     }
-    else {
-      entero2 = entero2+1;
-    }
+
   }
-  console.log("entero: "+entero);
-  console.log("entero2: "+entero2);
+  //console.log("entero: "+entero);
+  //console.log("entero2: "+entero2);
 
 
 }
