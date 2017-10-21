@@ -15,6 +15,27 @@
     <script>
     $(document).ready(function() {
 
+        //alert("HOLA");
+        /*$.get( "http://g16ecysusac.tk/phpfolder/PollutionApi.php?fecha=2017-10-17", function( data ) {
+            //$( ".result" ).html( data );
+            $('#divjson').html(data);
+              alert( "Load was performed." );
+        });
+        */
+        var jqxhr = $.get( "http://g16ecysusac.tk/phpfolder/mapaapi.php", function() {
+    alert( "success" );
+  })
+    .done(function() {
+      alert( "second success" );
+    })
+    .fail(function() {
+      alert( "error" );
+    })
+    .always(function() {
+      alert( "finished" );
+    });
+
+
       window.initMap = function() {
         var uluru = {lat: -25.363, lng: 131.044};
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -89,6 +110,7 @@
             alert( "Load was performed." );
       });
       */
+      /*
       var jqxhr = $.get( "http://g16ecysusac.tk/phpfolder/mapaapi.php", function() {
   alert( "success" );
 })
@@ -101,7 +123,7 @@
   .always(function() {
     alert( "finished" );
   });
-
+*/
     }
 
     window.walk(obj);
