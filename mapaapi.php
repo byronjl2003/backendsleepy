@@ -62,7 +62,7 @@
     //$filas = $query->fetchAll();
     $cont = 0;
     $arrays = array();
-    if ($$query->execute()) {
+    if ($query->execute()) {
     while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 
         $arrays[$cont] = array();
