@@ -67,8 +67,8 @@ walk(obj);
 */
 
       var obj = {co1: {la:14.643002, ln:-90.5602},co2: {la:14.637345,ln:-90.54593}};
-      //var entero =0;
-      //var entero2 =0;
+      var cord1 =0;
+      var cord2 =0;
       var keyglobal;
 function walk(obj) {
 
@@ -80,20 +80,38 @@ function walk(obj) {
         if(key == 'co')
         {
           console.log("es un cord");
+          var val = obj[key];
+          console.log(val);
+          walk(val);
         }
         else if(key == 'la')
         {
           console.log("es un lat");
+          var val = obj[key];
+          cord1 = val;
+          console.log(val);
+          walk(val);
         }
         else if(key == 'ln') {
           console.log("es un lon");
+          var val = obj[key];
+          cord2 = val;
+          var latLng = new google.maps.LatLng(14.643002,-90.5602);
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
+          console.log(val);
+
+          walk(val);
         }
         else {
           console.log("ninguno");
+          var val = obj[key];
+          console.log(val);
+          walk(val);
         }
-      var val = obj[key];
-      console.log(val);
-      walk(val);
+
     }
 
   }
