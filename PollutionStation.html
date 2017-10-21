@@ -41,7 +41,37 @@
           var cord1 =0;
           var cord2 =0;
           var keyglobal;
-    window.walk = function(obj) {
+    window.walk = function(data) {
+      for(var i in data)
+      {
+        var la = data[i].la;
+        var ln = data[i].ln;
+        console.log(la);
+        console.log(ln);
+      }
+    }
+    window.ask = function(){
+      //alert("HOLA");
+      $.get( "http://g16ecysusac.tk/phpfolder/mapaapi.php", function( data ) {
+          //$( ".result" ).html( data );
+          //$('#divjson').html(data);
+            //alert( "Load was performed." );
+            window.walk(data);
+      });
+    }
+
+
+    window.ask();
+
+
+      }
+
+
+
+
+
+
+/*
 
       console.log("ENTRO!")
       for (var key in obj) {
@@ -85,29 +115,10 @@
       //console.log("entero2: "+entero2);
 
 
-    }
-    window.ask = function(){
-      //alert("HOLA");
-      $.get( "http://g16ecysusac.tk/phpfolder/mapaapi.php", function( data ) {
-          //$( ".result" ).html( data );
-          //$('#divjson').html(data);
-            //alert( "Load was performed." );
-            window.walk(data);
-      });
-    }
-
-
-    window.ask();
-
-
-      }
 
 
 
 
-
-
-/*
       window.eqfeed_callback = function(results) {
         //var latLng = new google.maps.LatLng(coords[1],coords[0]);
         var latLng = new google.maps.LatLng(14.643002,-90.5602);
