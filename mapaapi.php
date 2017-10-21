@@ -50,20 +50,7 @@
    private function convertirJson($data) {
      return json_encode($data);
    }
-  private function gettoneladas($ppm,$tiempo)
-  {
-    $var peso = 16+12;
-    $var toneladas = $ppm * 0.000001 *0.001 * (peso/29);
-    return $var;
-  }
-  private function gettrafic($la,$ln,$la2,$ln2)
-  {
-    //https://maps.googleapis.com/maps/api/distancematrix/json?origins=14.5945613,-90.55341&destinations=14.594195,-90.5528188&key=AIzaSyCjptyNKD76g3d4w6-oyBegeXphPsNUx84
-    $uri = "https://maps.googleapis.com/maps/api/distancematrix/json?"."origins=".$la.",".$ln."&destinations=". $la2.",".$ln2 ."&key=AIzaSyCjptyNKD76g3d4w6-oyBegeXphPsNUx84";
-    $response = \Httpful\Request::get($uri)->send();
 
-  //echo 'The Dead Weather has ' . count($response->body->result->album) . " albums.\n";
-  }
   private function mapaapi($fecha) {
     if ($_SERVER['REQUEST_METHOD'] != "GET") {
       $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
