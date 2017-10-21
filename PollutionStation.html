@@ -25,14 +25,14 @@
           position: uluru,
           map: map
         });
-        window.addmarker = function(){
-            var latLng2 = new google.maps.LatLng(31.573853,-102.22291);
+        window.addmarker = function(c1,c2){
+            var latLng2 = new google.maps.LatLng(c1,c2);
             var marker2 = new google.maps.Marker({
               position: latLng2,
               map: map
             });
           }
-          window.addmarker();
+          window.addmarker(31.573853,-102.22291);
 
       }
 
