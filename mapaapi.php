@@ -54,7 +54,8 @@
     if ($_SERVER['REQUEST_METHOD'] != "GET") {
       $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
     }
-    $this->mostrarRespuesta('holismapaapi', 200);
+    $varr = 'holismapaapi';
+    $this->mostrarRespuesta($this->convertirJson($varr), 200);
     /*
     select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = 'byronjl2003@gmail.com') T ORDER BY T.fecha DESC LIMIT 1;
     */
@@ -72,7 +73,7 @@
       //$respuesta['Data'] = $filas;
       //$this->mostrarRespuesta($this->convertirJson($respuesta), 200);
       //$this->mostrarRespuesta('{co1: {la:14.643002, ln:-90.5602},co2: {la:14.637345,ln:-90.54593}}', 200);
-      $this->mostrarRespuesta('holismapaapi', 200);
+      //$this->mostrarRespuesta('holismapaapi', 200);
     //}
     //$this->mostrarRespuesta($this->devolverError(2), 204);
     }
