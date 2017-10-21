@@ -60,9 +60,10 @@
     $query = $this->_conn->prepare("select cord1,cord2 from data2 where fecha between '2017-10-17' and '2017-10-18' limit 3");
     $query->execute();
     //$filas = $query->fetchAll();
-    $cont = 0;
-    $varvar = 'cord';
-    $varvar2 = 'cord2';
+    $cont = 1;
+    $varvar = 'cord'.$cont;
+    $cont = $cont+1;
+    $varvar2 = 'cord2'.$cont;
     $arrayss = array();
     $arrayss[$varvar] = array("la"=>14.643033,"ln"=>-90.559975);
     $arrayss[$varvar2] = array("la"=>14.643049,"ln"=>-90.554115);
