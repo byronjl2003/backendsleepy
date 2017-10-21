@@ -1,7 +1,7 @@
 <?php
   require_once("Rest.php");
   include('./httpful.phar');
-  class mapaapi extends Rest {
+  class mapaapihoy extends Rest {
    const servidor = "localhost";
    const usuario_db = "root";
    const pwd_db = "Birlolo57521814";
@@ -41,7 +41,7 @@
      //$array_ = array(0 =>$fecha_);
      //call_user_func_array(array($this,"getcords"),$array_);
 
-     call_user_func(array($this,"mapaapi"));
+     call_user_func(array($this,"mapaapihoy"));
 
 
 
@@ -50,29 +50,22 @@
    private function convertirJson($data) {
      return json_encode($data);
    }
-  private function gettoneladas($ppm,$tiempo)
+  private function gettrafic($la,$ln)
   {
-    $var peso = 16+12;
-    $var toneladas = $ppm * 0.000001 *0.001 * (peso/29);
-    return $var;
-  }
-  private function gettrafic($la,$ln,$la2,$ln2)
-  {
-    //https://maps.googleapis.com/maps/api/distancematrix/json?origins=14.5945613,-90.55341&destinations=14.594195,-90.5528188&key=AIzaSyCjptyNKD76g3d4w6-oyBegeXphPsNUx84
-    $uri = "https://maps.googleapis.com/maps/api/distancematrix/json?"."origins=".$la.",".$ln."&destinations=". $la2.",".$ln2 ."&key=AIzaSyCjptyNKD76g3d4w6-oyBegeXphPsNUx84";
+    //https://maps.googleapis.com/maps/api/distancematrix/json?origins=14.5945613,-90.55341&destinations=14.594195,-90.5528188&departure_time=&key=AIzaSyCjptyNKD76g3d4w6-oyBegeXphPsNUx84
+    $uri = "https://www.googleapis.com/freebase/v1/mqlread?query=%7B%22type%22:%22/music/artist%22%2C%22name%22:%22The%20Dead%20Weather%22%2C%22album%22:%5B%5D%7D";
     $response = \Httpful\Request::get($uri)->send();
 
   //echo 'The Dead Weather has ' . count($response->body->result->album) . " albums.\n";
   }
-  private function mapaapi($fecha) {
+  private function mapaapihoy($fecha) {
     if ($_SERVER['REQUEST_METHOD'] != "GET") {
       $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
 
 
     }
-
     //$varr = 'holismapaapi';
-    $query = $this->_conn->prepare("select cord1,cord2,ppm,fecha from data2 where fecha between '2017-10-17' and '2017-10-18'");
+    $query = $this->_conn->prepare("select cord1,cord2,ppm,fecha from data2 where fecha between '2017-10-21' and '2017-10-22'");
     $query->execute();
     //$filas = $query->fetchAll();
     $cont = 1;
@@ -125,6 +118,6 @@
     }
 
  }
- $api = new mapaapi();
+ $api = new mapaapihoy();
  $api->procesarLLamada();
  ?>

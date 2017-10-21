@@ -125,6 +125,6 @@
     }
 
  }
- $api = new mapaapi();
+ $api = new toneladaapi();
  $api->procesarLLamada();
  ?>

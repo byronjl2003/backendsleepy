@@ -44,9 +44,7 @@
             var marker2 = new google.maps.Marker({
               position: latLng2,
               map: map
-            });
-
-            var infe1 = "";
+            });var infe1 = "";
             if(ppm<1000)
             {
               infe1 = "Inferencia de PPM, el ambiente no esta contaminado";
@@ -69,6 +67,8 @@
                                 '<p>InferenciaToneladas:'+'......'+'</p>'+
                                 '</div>'+
                                 '</div>';
+
+            
 
                             var infowindow = new google.maps.InfoWindow({
                               content: contentString
@@ -100,26 +100,9 @@
         window.addmarker(la,ln,fe,ppm);
       }
     }
-
-    window.gettoneladas = function(ppm,tiempo)
-    {
-      var peso = 16+12;
-      var toneladas = ppm * 0.000001 *0.001 * (peso/29);
-      return var;
-    }
-    private function gettrafic($la,$ln,$la2,$ln2)
-    {
-      //https://maps.googleapis.com/maps/api/distancematrix/json?origins=14.5945613,-90.55341&destinations=14.594195,-90.5528188&key=AIzaSyCjptyNKD76g3d4w6-oyBegeXphPsNUx84
-      $uri = "https://maps.googleapis.com/maps/api/distancematrix/json?"."origins=".$la.",".$ln."&destinations=". $la2.",".$ln2 ."&key=AIzaSyCjptyNKD76g3d4w6-oyBegeXphPsNUx84";
-      $response = \Httpful\Request::get($uri)->send();
-
-    //echo 'The Dead Weather has ' . count($response->body->result->album) . " albums.\n";
-    }
-
-
     window.ask = function(){
       //alert("HOLA");
-      $.get( "http://g16ecysusac.tk/phpfolder/mapaapi.php", function( data ) {
+      $.get( "http://g16ecysusac.tk/phpfolder/mapaapihoy.php", function( data ) {
           //$( ".result" ).html( data );
           //$('#divjson').html(data);
             //alert( "Load was performed." );

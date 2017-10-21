@@ -1,7 +1,7 @@
 <?php
   require_once("Rest.php");
   include('./httpful.phar');
-  class mapaapi extends Rest {
+  class mapaapi18 extends Rest {
    const servidor = "localhost";
    const usuario_db = "root";
    const pwd_db = "Birlolo57521814";
@@ -41,7 +41,7 @@
      //$array_ = array(0 =>$fecha_);
      //call_user_func_array(array($this,"getcords"),$array_);
 
-     call_user_func(array($this,"mapaapi"));
+     call_user_func(array($this,"mapaapi18"));
 
 
 
@@ -64,7 +64,7 @@
 
   //echo 'The Dead Weather has ' . count($response->body->result->album) . " albums.\n";
   }
-  private function mapaapi($fecha) {
+  private function mapaapi18($fecha) {
     if ($_SERVER['REQUEST_METHOD'] != "GET") {
       $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
 
@@ -72,7 +72,7 @@
     }
 
     //$varr = 'holismapaapi';
-    $query = $this->_conn->prepare("select cord1,cord2,ppm,fecha from data2 where fecha between '2017-10-17' and '2017-10-18'");
+    $query = $this->_conn->prepare("select cord1,cord2,ppm,fecha from data2 where fecha between '2017-10-18' and '2017-10-19'");
     $query->execute();
     //$filas = $query->fetchAll();
     $cont = 1;
@@ -125,6 +125,6 @@
     }
 
  }
- $api = new mapaapi();
+ $api = new mapaapi18();
  $api->procesarLLamada();
  ?>
