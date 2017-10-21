@@ -98,7 +98,11 @@ function walk(obj) {
           var val = obj[key];
           cord2 = val;
           console.log(cord2);
-
+          var latLng = new google.maps.LatLng(14.643002,-90.5602);
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
           //console.log(val);
 
           walk(val);
