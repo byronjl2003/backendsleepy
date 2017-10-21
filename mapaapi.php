@@ -36,28 +36,25 @@
      return $errores[$id];
    }
    public function procesarLLamada() {
-
      //$fecha_ = $_REQUEST['fecha'];
      //$array_ = array(0 =>$fecha_);
      //call_user_func_array(array($this,"getcords"),$array_);
-
      call_user_func(array($this,"mapaapi"));
-
-
-
    }
-
    private function convertirJson($data) {
      return json_encode($data);
    }
-
+  private function gettrafic($la,$ln)
+  {
+    //https://maps.googleapis.com/maps/api/distancematrix/json?origins=14.5945613,-90.55341&destinations=14.594195,-90.5528188&departure_time=&key=AIzaSyCjptyNKD76g3d4w6-oyBegeXphPsNUx84
+    $uri = "https://www.googleapis.com/freebase/v1/mqlread?query=%7B%22type%22:%22/music/artist%22%2C%22name%22:%22The%20Dead%20Weather%22%2C%22album%22:%5B%5D%7D";
+    $response = \Httpful\Request::get($uri)->send();
+  //echo 'The Dead Weather has ' . count($response->body->result->album) . " albums.\n";
+  }
   private function mapaapi($fecha) {
     if ($_SERVER['REQUEST_METHOD'] != "GET") {
       $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
-
-
     }
-
     //$varr = 'holismapaapi';
     $query = $this->_conn->prepare("select cord1,cord2,ppm,fecha from data2 where fecha between '2017-10-17' and '2017-10-18'");
     $query->execute();
@@ -67,10 +64,7 @@
     $arrayss = array();
     //$arrayss[$varvar] = array("la"=>14.643033,"ln"=>-90.559975);
     //$arrayss[$varvar2] = array("la"=>14.643049,"ln"=>-90.554115);
-
-
     while($row = $query->fetch()) {
-
       $varcord1 = $row['cord1'];
       $varcord2 = $row['cord2'];
       $varppm = $row['ppm'];
@@ -78,28 +72,21 @@
       $arrayss[$varvar] = array("la"=>$varcord1,"ln"=>$varcord2,"ppm"=>$varppm,"fecha"=>$varfec);
       $cont = $cont+1;
       $varvar = 'cord'.$cont;
-
-
   }
-
     $arrays = array(
     "cord1"=> array("la"=>14.643033,"ln"=>-90.559975),
     "cord2"=> array("la"=>14.643049,"ln"=>-90.554115)
-
 );
-
     $this->mostrarRespuesta($this->convertirJson($arrayss), 200);
     /*
     select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = 'byronjl2003@gmail.com') T ORDER BY T.fecha DESC LIMIT 1;
     */
-
 //var obj = {co1: {la:14.643002, ln:-90.5602},co2: {la:14.637345,ln:-90.54593}};
     //$query = $this->_conn->prepare("select cord1,cord2 from data2 where fecha between '2017-10-17' and '2017-10-18' limit 1");
     //$query->bindValue(1,$email, PDO::PARAM_STR)
     //$query->bindValue(2,$fecha1, PDO::PARAM_STR);
     //$query->bindValue(3,$fecha2, PDO::PARAM_STR);
     //$query->execute();
-
     //$filas = $query->fetchAll(PDO::FETCH_ASSOC);
     //$num = count($filas);
     //if ($num > 0) {
@@ -110,7 +97,6 @@
     //}
     //$this->mostrarRespuesta($this->devolverError(2), 204);
     }
-
  }
  $api = new mapaapi();
  $api->procesarLLamada();
