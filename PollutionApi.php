@@ -58,7 +58,7 @@
     select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = 'byronjl2003@gmail.com') T ORDER BY T.fecha DESC LIMIT 1;
     */
 
-
+//var obj = {co1: {la:14.643002, ln:-90.5602},co2: {la:14.637345,ln:-90.54593}};
     $query = $this->_conn->prepare("select cord1,cord2 from data2 where fecha between '2017-10-17' and '2017-10-18' limit 1");
     //$query->bindValue(1,$email, PDO::PARAM_STR)
     //$query->bindValue(2,$fecha1, PDO::PARAM_STR);
@@ -69,7 +69,7 @@
     if ($num > 0) {
       $respuesta['Data'] = $filas;
       //$this->mostrarRespuesta($this->convertirJson($respuesta), 200);
-      $this->mostrarRespuesta('{"Data":[{"data1":{"id":1,"content":"Hello, World!"}},{"data2":{"id":2,"content":"Hello, World!"}}]}', 200);
+      $this->mostrarRespuesta('{co1: {la:14.643002, ln:-90.5602},co2: {la:14.637345,ln:-90.54593}}', 200);
     }
     $this->mostrarRespuesta($this->devolverError(2), 204);
     }
