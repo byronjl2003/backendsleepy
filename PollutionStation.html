@@ -12,7 +12,7 @@
     <script>
     $(document).ready(function() {
 
-      var obj = {a: 1, b: 2, c: {a: 1, b: 2}};
+      var obj = {{a: 1.5, b: 2.5}, b: 2, c: {a: 1, b: 2}};
       function walk(obj) {
         for (var key in obj) {
           if (obj.hasOwnProperty(key)) {
