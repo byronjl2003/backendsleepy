@@ -32,7 +32,64 @@
               map: map
             });
           }
-          //window.addmarker(31.573853,-102.22291);
+          var obj = {co1: {la:14.643002, ln:-90.5602},co2: {la:14.637345,ln:-90.54593}};
+          var cord1 =0;
+          var cord2 =0;
+          var keyglobal;
+    window.walk = function(obj) {
+
+      console.log("ENTRO!")
+      for (var key in obj) {
+          console.log("key:"+key);
+          //entero = entero+1;
+          if (obj.hasOwnProperty(key)) {
+            if(key == 'co')
+            {
+              console.log("es un cord");
+              var val = obj[key];
+              console.log(val);
+              windows.walk(val);
+            }
+            else if(key == 'la')
+            {
+              console.log("es un lat");
+              var val = obj[key];
+              cord1 = val;
+              console.log(cord1);
+              windows.walk(val);
+            }
+            else if(key == 'ln') {
+              console.log("es un lon");
+              var val = obj[key];
+              cord2 = val;
+              console.log(cord2);
+              //var latLng = new google.maps.LatLng(14.643002,-90.5602);
+              //var marker = new google.maps.Marker({
+                //position: latLng,
+                //map: map
+              //});
+              //console.log(val);
+
+              windows.walk(val);
+            }
+            else {
+              console.log("ninguno");
+              var val = obj[key];
+              console.log(val);
+              windows.walk(val);
+            }
+
+        }
+
+      }
+      //console.log("entero: "+entero);
+      //console.log("entero2: "+entero2);
+
+
+    }
+    windows.walk(obj);
+          window.addmarker(31.573853,-102.22291);
+
 
       }
 
