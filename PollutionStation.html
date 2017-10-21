@@ -17,6 +17,7 @@
       var entero2 =0;
 function walk(obj) {
   for (var key in obj) {
+      console.log("key:"+key);
       entero = entero+1;
       if (obj.hasOwnProperty(key)) {
       var val = obj[key];
