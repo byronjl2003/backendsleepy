@@ -1,5 +1,5 @@
 <?php
-//https://maps.googleapis.com/maps/api/distancematrix/json?origins=40.6655101,-73.89188969999998&destinations=&key=AIzaSyCjptyNKD76g3d4w6-oyBegeXphPsNUx84
+
   require_once("Rest.php");
   include('./httpful.phar');
   class PollutionApi extends Rest {

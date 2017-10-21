@@ -50,7 +50,14 @@
    private function convertirJson($data) {
      return json_encode($data);
    }
+  private function gettrafic($la,$ln)
+  {
+    //https://maps.googleapis.com/maps/api/distancematrix/json?origins=40.6655101,-73.89188969999998&destinations=&key=AIzaSyCjptyNKD76g3d4w6-oyBegeXphPsNUx84
+    //$uri = "https://www.googleapis.com/freebase/v1/mqlread?query=%7B%22type%22:%22/music/artist%22%2C%22name%22:%22The%20Dead%20Weather%22%2C%22album%22:%5B%5D%7D";
+//$response = \Httpful\Request::get($uri)->send();
 
+//echo 'The Dead Weather has ' . count($response->body->result->album) . " albums.\n";
+  }
   private function mapaapi($fecha) {
     if ($_SERVER['REQUEST_METHOD'] != "GET") {
       $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
