@@ -12,21 +12,17 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjptyNKD76g3d4w6-oyBegeXphPsNUx84&callback=initMap">
     </script>
-    <script>
-    $.get("http://g16ecysusac.tk/phpfolder/mapaapi.php", function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
-    });
-    </script>
+
     <script>
     $(document).ready(function() {
 
         //alert("HOLA");
-        /*$.get( "http://g16ecysusac.tk/phpfolder/PollutionApi.php?fecha=2017-10-17", function( data ) {
+        $.get( "http://g16ecysusac.tk/phpfolder/mapaapi.php", function( data ) {
             //$( ".result" ).html( data );
             $('#divjson').html(data);
               alert( "Load was performed." );
         });
-        */
+
 
       window.initMap = function() {
         var uluru = {lat: -25.363, lng: 131.044};
@@ -119,7 +115,7 @@
     }
 
     window.walk(obj);
-    window.ask();
+    //window.ask();
 
 
       }
