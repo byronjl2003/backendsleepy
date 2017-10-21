@@ -17,17 +17,13 @@
         for (var key in obj) {
           if (obj.hasOwnProperty(key)) {
             var kk = `${key}`;
-            if(kk == 'cord')
-            {
-                var val = obj[key];
-                walk(val);
-            }
-            else {
-              var val = obj[key];
-              console.log( kk +' = '+val);
-            }
+            var val = obj[key];
 
-
+            console.log( kk +' = '+val);
+            walk(val);
+          }
+          else {
+            console.log('sad');
           }
         }
       }
