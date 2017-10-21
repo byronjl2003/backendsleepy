@@ -82,15 +82,11 @@
 
     }
     window.ask = function(){
-      alert("HOLA");
-      $.ajax({
-          url: "http://g16ecysusac.tk/phpfolder/PollutionApi.php?fecha=2017-10-17"
-      }).then(function(data) {
-        //alert("HOLA");
-        //window.walk(data);
-        //$('#divjson').html("HOLA!!!"+JSON.stringify(data));
-        // $('.greeting-id').append(Data.data1.id);
-         //$('.greeting-content').append(Data.data2.id);
+      //alert("HOLA");
+      $.get( "view-source:http://g16ecysusac.tk/phpfolder/PollutionApi.php?fecha=2017-10-17", function( data ) {
+          //$( ".result" ).html( data );
+          $('#divjson').html(data);
+            alert( "Load was performed." );
       });
     }
 
