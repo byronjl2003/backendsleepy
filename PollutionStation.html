@@ -10,10 +10,14 @@
     </style>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>
-    function UserAction(){alert("hola");}
-
-
-
+    $(document).ready(function() {
+    $.ajax({
+        url: "http://g16ecysusac.tk/phpfolder/PollutionApi.php?fecha=2017-10-17"
+    }).then(function(data) {
+       $('.greeting-id').append(data.id);
+       $('.greeting-content').append(data.content);
+    });
+});
     </script>
 
   </head>
@@ -36,6 +40,13 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjptyNKD76g3d4w6-oyBegeXphPsNUx84&callback=initMap">
     </script>
+
+
+       <div>
+           <p class="greeting-id">The ID is </p>
+           <p class="greeting-content">The content is </p>
+       </div>
+
 
     <div id="divjson">
       <button type="submit" onclick="UserAction()">Search</button>
