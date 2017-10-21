@@ -15,6 +15,42 @@
     <script>
     $(document).ready(function() {
 
+      var obj = {cord: {lat:14.643002, lon:-90.5602},cord:{lat:14.637345,lon:-90.54593}};
+      var latLng;
+      var marker;
+      function walk(obj) {
+
+  console.log("ENTRO!")
+  for (var key in obj) {
+      console.log("key:"+key);
+      //entero = entero+1;
+      if (obj.hasOwnProperty(key)) {
+
+      var val = obj[key];
+      if(key == 'cord')
+      {
+        console.log("es un cord");
+      }
+      else if(key == 'lat')
+      {
+        console.log("es un lat");
+      }
+      else if(key == 'lon') {
+        console.log("es un lon");
+      }
+      else {
+        console.log("ninguno");
+      }
+      console.log(val);
+      walk(val);
+    }
+  }
+  //console.log("entero: "+entero);
+  //console.log("entero2: "+entero2);
+
+
+}
+walk(obj);
       window.eqfeed_callback = function(results) {
         for (var i = 0; i < results.features.length; i++) {
           var coords = results.features[i].geometry.coordinates;
@@ -84,8 +120,8 @@ for (var prop in obj) {
     var map;
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 2,
-        center: new google.maps.LatLng(2.8,-187.3),
+        zoom: 10
+        center: new google.maps.LatLng(14.631692,-90.54833),
         mapTypeId: 'terrain'
       });
 
