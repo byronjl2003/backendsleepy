@@ -61,9 +61,11 @@
     $query->execute();
     //$filas = $query->fetchAll();
     $cont = 0;
+    $varvar = 'cord';
+    $varvar2 = 'cord2'
     $arrayss = array();
-    $arrayss[0] = array("la"=>14.643033,"ln"=>-90.559975);
-    $arrayss[1] = array("la"=>14.643049,"ln"=>-90.554115);
+    $arrayss[$varvar] = array("la"=>14.643033,"ln"=>-90.559975);
+    $arrayss[$varvar2] = array("la"=>14.643049,"ln"=>-90.554115);
 
 
     while($row = $query->fetch()) {
