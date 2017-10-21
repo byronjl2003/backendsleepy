@@ -12,9 +12,10 @@
     <script>
     $(document).ready(function() {
     $.ajax({
-        url: "http://g16ecysusac.tk/phpfolder/PollutionApi.php?fecha=2017-10-17"
+        url: "http://rest-service.guides.spring.io/greeting"
     }).then(function(data) {
-       alert("ALERT"+data.Data.);
+       $('.greeting-id').append(data.id);
+       $('.greeting-content').append(data.content);
     });
 });
     </script>
