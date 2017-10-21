@@ -57,7 +57,7 @@
 
     }
     //$varr = 'holismapaapi';
-    $query = $this->_conn->prepare("select cord1,cord2 from data2 where fecha between '2017-10-17' and '2017-10-18' limit 2");
+    $query = $this->_conn->prepare("select cord1,cord2 from data2 where fecha between '2017-10-17' and '2017-10-18'");
     $query->execute();
     //$filas = $query->fetchAll();
     $cont = 1;
