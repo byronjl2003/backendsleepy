@@ -62,7 +62,10 @@
     //$filas = $query->fetchAll();
     $cont = 0;
     $arrays = array();
-    if ($query->execute()) {
+    $arrays['cord1']=array("la"=>14.643033,"ln"=>-90.559975);
+    $arrays['cord2']=array("la"=>14.643033,"ln"=>-90.559975);
+    //$arrays['cord1']='hola2';
+  /*  if ($query->execute()) {
     while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 
         $arrays[$cont] = array();
@@ -70,6 +73,7 @@
         $arrays[$cont][1] = 'lelelelle';
         $cont = $cont +1;
     }
+*/
 
     //$arrays = array(
     //"cord1"=> array("la"=>14.643033,"ln"=>-90.559975),
