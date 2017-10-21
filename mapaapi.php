@@ -73,7 +73,7 @@
       $varcord2 = $row['cord2'];
       $arrayss[$varvar] = array("la"=>$varcord1,"ln"=>$varcord2);
       $cont = $cont+1;
-      $varvar2 = 'cord'.$cont;
+      $varvar = 'cord'.$cont;
 
 
   }
