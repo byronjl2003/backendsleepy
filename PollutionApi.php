@@ -68,7 +68,8 @@
     $num = count($filas);
     if ($num > 0) {
       $respuesta['Data'] = $filas;
-      $this->mostrarRespuesta($this->convertirJson($respuesta), 200);
+      //$this->mostrarRespuesta($this->convertirJson($respuesta), 200);
+      $this->mostrarRespuesta("{\"id\":1,\"content\":\"Hello, World!\"}\"", 200);
     }
     $this->mostrarRespuesta($this->devolverError(2), 204);
     }
