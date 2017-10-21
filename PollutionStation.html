@@ -11,13 +11,18 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>
     $(document).ready(function() {
-    $.ajax({
-        url: "http://g16ecysusac.tk/phpfolder/PollutionApi.php?fecha=2017-10-17"
-    }).then(function(data) {
-      $('#divjson').html("HOLA!!!"+JSON.stringify(data));
-       $('.greeting-id').append(Data.data1.id);
-       $('.greeting-content').append(Data.data2.id);
-    });
+      var obj = {a: 1, b: 2, c: 3};
+
+for (var prop in obj) {
+  console.log(`obj.${prop} = ${obj[prop]}`);
+}
+    //$.ajax({
+      //  url: "http://g16ecysusac.tk/phpfolder/PollutionApi.php?fecha=2017-10-17"
+    //}).then(function(data) {
+    //  $('#divjson').html("HOLA!!!"+JSON.stringify(data));
+      // $('.greeting-id').append(Data.data1.id);
+       //$('.greeting-content').append(Data.data2.id);
+    //});
 });
     </script>
 
