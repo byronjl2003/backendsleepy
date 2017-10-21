@@ -13,9 +13,11 @@
     $(document).ready(function() {
 
       var obj = {a: 1, b: 2, c: {a: 1, b: 2}};
+      var entero =0;
 function walk(obj) {
   for (var key in obj) {
-    if (obj.hasOwnProperty(key)) {
+      entero = entero+1;
+      if (obj.hasOwnProperty(key)) {
       var val = obj[key];
       console.log(val);
       walk(val);
@@ -23,6 +25,7 @@ function walk(obj) {
   }
 }
 walk(obj);
+console.log("entero: "+entero);
   /*    var obj = {a: 1, b: 2, c: 3};
 
 for (var prop in obj) {
