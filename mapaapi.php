@@ -57,7 +57,7 @@
 
     }
     //$varr = 'holismapaapi';
-    $query = $this->_conn->prepare("select cord1,cord2 from data2 where fecha between '2017-10-17' and '2017-10-18'");
+    $query = $this->_conn->prepare("select cord1,cord2,ppm,fecha from data2 where fecha between '2017-10-17' and '2017-10-18'");
     $query->execute();
     //$filas = $query->fetchAll();
     $cont = 1;
@@ -71,7 +71,9 @@
 
       $varcord1 = $row['cord1'];
       $varcord2 = $row['cord2'];
-      $arrayss[$varvar] = array("la"=>$varcord1,"ln"=>$varcord2);
+      $varppm = $row['ppm'];
+      $varfec = $row['fecha'];
+      $arrayss[$varvar] = array("la"=>$varcord1,"ln"=>$varcord2,"ppm"=>$varppm,"fecha"=>$varfec);
       $cont = $cont+1;
       $varvar = 'cord'.$cont;
 
