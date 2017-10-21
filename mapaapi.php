@@ -62,8 +62,6 @@
     //$filas = $query->fetchAll();
     $cont = 1;
     $varvar = 'cord'.$cont;
-    $cont = $cont+1;
-    $varvar2 = 'cord2'.$cont;
     $arrayss = array();
     $arrayss[$varvar] = array("la"=>14.643033,"ln"=>-90.559975);
     $arrayss[$varvar2] = array("la"=>14.643049,"ln"=>-90.554115);
@@ -73,6 +71,9 @@
 
       $varcord1 = $row['cord1'];
       $varcord2 = $row['cord2'];
+      $arrayss[$varvar] = array("la"=>$varcord1,"ln"=>$varcord2);
+      $cont = $cont+1;
+      $varvar2 = 'cord'.$cont;
 
 
   }
