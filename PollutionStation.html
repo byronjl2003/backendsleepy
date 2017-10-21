@@ -12,15 +12,21 @@
     <script>
     $(document).ready(function() {
 
-      var obj = {a:{a: 1.5, b: 2.5}, b: 2, c: {a: 1, b: 2}};
+      var obj = {cord:{a: 1.5, b: 2.5}, cord: {a: 1, b: 2}, cord: {a: 1, b: 2}};
       function walk(obj) {
         for (var key in obj) {
           if (obj.hasOwnProperty(key)) {
             var kk = `${key}`;
-            var val = obj[key];
-          
-            console.log( kk +' = '+val);
-            walk(val);
+            if(kk == 'cord')
+            {
+                walk(val);
+            }
+            else {
+              var val = obj[key];
+              console.log( kk +' = '+val);
+            }
+
+
           }
         }
       }
