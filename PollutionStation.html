@@ -16,9 +16,9 @@
       function walk(obj) {
         for (var key in obj) {
           if (obj.hasOwnProperty(key)) {
-            //var kk = obj.${key}+'';
+            var kk = `${key}`;
             var val = obj[key];
-            console.log(`${key}` +' = '+val);
+            console.log( kk +' = '+val);
             walk(val);
           }
         }
