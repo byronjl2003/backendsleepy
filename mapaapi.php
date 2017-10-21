@@ -69,7 +69,7 @@
     while($row = $query->fetch()) {
 
       $varcord1 = $row['cord1'];
-      $varcord2 = = $row['cord2'];
+      $varcord2 = $row['cord2'];
 
 
   }
