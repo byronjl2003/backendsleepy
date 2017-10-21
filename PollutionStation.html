@@ -14,6 +14,7 @@
 
       var obj = {a: 1, b: 2, c: {a: 1, b: 2}};
       var entero =0;
+      var entero2 =0;
 function walk(obj) {
   for (var key in obj) {
       entero = entero+1;
@@ -22,10 +23,14 @@ function walk(obj) {
       console.log(val);
       walk(val);
     }
+    else {
+      entero2 = entero2+1;
+    }
   }
 }
 walk(obj);
 console.log("entero: "+entero);
+console.log("entero2: "+entero2);
   /*    var obj = {a: 1, b: 2, c: 3};
 
 for (var prop in obj) {
