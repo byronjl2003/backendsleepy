@@ -14,6 +14,15 @@
     </script>
     <script>
     $(document).ready(function() {
+
+      window.eqfeed_callback = function(results) {
+        //var latLng = new google.maps.LatLng(coords[1],coords[0]);
+        var latLng = new google.maps.LatLng(14.643002,-90.5602);
+        var marker = new google.maps.Marker({
+          position: latLng,
+          map: map
+        });
+      }
 /*
       var obj = {cord: {lat:14.643002, lon:-90.5602},cord:{lat:14.637345,lon:-90.54593}};
       var latLng;
@@ -183,14 +192,7 @@ for (var prop in obj) {
 
       // Loop through the results array and place a marker for each
       // set of coordinates.
-      window.eqfeed_callback = function(results) {
-        //var latLng = new google.maps.LatLng(coords[1],coords[0]);
-        var latLng = new google.maps.LatLng(14.643002,-90.5602);
-        var marker = new google.maps.Marker({
-          position: latLng,
-          map: map
-        });
-      }
+
 
     </script>
 
