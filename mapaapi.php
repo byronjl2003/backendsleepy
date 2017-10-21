@@ -62,7 +62,8 @@
     //$filas = $query->fetchAll();
     $cont = 0;
     $arrayss = array();
-    //$arrays['cord1']=array("la"=>14.643033,"ln"=>-90.559975);
+    $arrayss['cord1'] = 'ono';
+    $arrayss['cord2'] = 'ono';
     //$arrays['cord2']=array("la"=>14.643033,"ln"=>-90.559975);
     //$arrays['cord1']='hola2';
   /*  if ($query->execute()) {
