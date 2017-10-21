@@ -98,11 +98,11 @@ function walk(obj) {
           var val = obj[key];
           cord2 = val;
           console.log(cord2);
-          var latLng = new google.maps.LatLng(14.643002,-90.5602);
-          var marker = new google.maps.Marker({
-            position: latLng,
-            map: map
-          });
+          //var latLng = new google.maps.LatLng(14.643002,-90.5602);
+          //var marker = new google.maps.Marker({
+            //position: latLng,
+            //map: map
+          //});
           //console.log(val);
 
           walk(val);
@@ -176,11 +176,11 @@ for (var prop in obj) {
             });
 
             // Create a <script> tag and set the USGS URL as the source.
-            var script = document.createElement('script');
+          //  var script = document.createElement('script');
             // This example uses a local copy of the GeoJSON stored at
             // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-            script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
-            document.getElementsByTagName('head')[0].appendChild(script);
+          //  script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
+            //document.getElementsByTagName('head')[0].appendChild(script);
           }
 
           // Loop through the results array and place a marker for each
