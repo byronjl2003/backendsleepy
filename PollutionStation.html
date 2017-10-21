@@ -18,7 +18,7 @@
           if (obj.hasOwnProperty(key)) {
             //var kk = obj.${key}+'';
             var val = obj[key];
-            console.log(obj +' = '+val);
+            console.log(`obj.${key}` +' = '+val);
             walk(val);
           }
         }
