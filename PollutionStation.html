@@ -81,7 +81,15 @@
 
 
     }
-    window.walk(obj);
+    $.ajax({
+        url: "http://g16ecysusac.tk/phpfolder/PollutionApi.php?fecha=2017-10-17"
+    }).then(function(data) {
+      window.walk(data);
+      //$('#divjson').html("HOLA!!!"+JSON.stringify(data));
+      // $('.greeting-id').append(Data.data1.id);
+       //$('.greeting-content').append(Data.data2.id);
+    });
+    //window.walk(obj);
 
 
 
