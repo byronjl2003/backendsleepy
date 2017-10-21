@@ -69,7 +69,7 @@
     if ($num > 0) {
       $respuesta['Data'] = $filas;
       //$this->mostrarRespuesta($this->convertirJson($respuesta), 200);
-      $this->mostrarRespuesta('{"id":1,"content":"Hello, World!"}', 200);
+      $this->mostrarRespuesta('[{"data1":{"id":1,"content":"Hello, World!"}},{"data2":{"id":1,"content":"Hello, World!"}}]', 200);
     }
     $this->mostrarRespuesta($this->devolverError(2), 204);
     }
