@@ -10,13 +10,8 @@
     </style>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET","http://g16ecysusac.tk/phpfolder/PollutionApi.php?fecha=2017-10-17", true);
-    xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send();
-    var response = JSON.parse(xhttp.responseText);
-    //$('#divjson').html(data);
-    alert("hola");
+    function UserAction(){alert("hola");}
+
 
 
     </script>
@@ -43,6 +38,7 @@
     </script>
 
     <div id="divjson">
+      <button type="submit" onclick="UserAction()">Search</button>
     </div>
 
 
