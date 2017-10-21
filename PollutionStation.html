@@ -77,6 +77,20 @@ function walk(obj) {
       console.log("key:"+key);
       //entero = entero+1;
       if (obj.hasOwnProperty(key)) {
+        if(key == 'cord')
+        {
+          console.log("es un cord");
+        }
+        else if(key == 'lat')
+        {
+          console.log("es un lat");
+        }
+        else if(key == 'lon') {
+          console.log("es un lon");
+        }
+        else {
+          console.log("ninguno");
+        }
       var val = obj[key];
       console.log(val);
       walk(val);
