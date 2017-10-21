@@ -1,5 +1,6 @@
 <?php
   require_once("Rest.php");
+  include('./httpful.phar');
   class mapaapi extends Rest {
    const servidor = "localhost";
    const usuario_db = "root";
