@@ -64,7 +64,12 @@
     $arrayss = array();
     $arrayss['cord1'] = array("la"=>14.643033,"ln"=>-90.559975);
     $arrayss['cord2'] = array("la"=>14.643049,"ln"=>-90.554115);
-    
+
+
+    while($row = $query->fetch()) {
+      $varrr = $row['cord1'];
+
+  }
 
     $arrays = array(
     "cord1"=> array("la"=>14.643033,"ln"=>-90.559975),
