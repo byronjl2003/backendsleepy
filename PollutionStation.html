@@ -66,7 +66,7 @@ walk(obj);
 
 */
 
-      var obj = {a: {aa:14.643002, ba:-90.5602},c: {ca:14.637345,cb:-90.54593}};
+      var obj = {co: {la:14.643002, ln:-90.5602},co: {la:14.637345,ln:-90.54593}};
       //var entero =0;
       //var entero2 =0;
       var keyglobal;
@@ -77,15 +77,15 @@ function walk(obj) {
       console.log("key:"+key);
       //entero = entero+1;
       if (obj.hasOwnProperty(key)) {
-        if(key == 'cord')
+        if(key == 'co')
         {
           console.log("es un cord");
         }
-        else if(key == 'lat')
+        else if(key == 'la')
         {
           console.log("es un lat");
         }
-        else if(key == 'lon') {
+        else if(key == 'ln') {
           console.log("es un lon");
         }
         else {
