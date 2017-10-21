@@ -59,7 +59,7 @@
     //$varr = 'holismapaapi';
     $query = $this->_conn->prepare("select cord1,cord2 from data2 where fecha between '2017-10-17' and '2017-10-18' limit 3");
     $query->execute();
-    $filas = $query->fetchAll(PDO::FETCH_ASSOC);
+    $filas = $query->fetchAll();
 
     $arrays = array(
     "cord1"=> array("la"=>14.643033,"ln"=>-90.559975),
