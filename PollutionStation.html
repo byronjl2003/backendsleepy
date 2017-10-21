@@ -11,11 +11,25 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>
     $(document).ready(function() {
-      var obj = {a: 1, b: 2, c: 3};
+
+      var obj = {a: 1, b: 2, c: {a: 1, b: 2}};
+      function walk(obj) {
+        for (var key in obj) {
+          if (obj.hasOwnProperty(key)) {
+            var val = obj[key];
+            console.log(val);
+            walk(val);
+          }
+        }
+      }
+      walk(obj);
+  /*    var obj = {a: 1, b: 2, c: 3};
 
 for (var prop in obj) {
   console.log(`obj.${prop} = ${obj[prop]}`);
 }
+
+*/
     //$.ajax({
       //  url: "http://g16ecysusac.tk/phpfolder/PollutionApi.php?fecha=2017-10-17"
     //}).then(function(data) {
