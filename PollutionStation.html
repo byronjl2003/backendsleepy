@@ -89,19 +89,20 @@ function walk(obj) {
           console.log("es un lat");
           var val = obj[key];
           cord1 = val;
-          console.log(val);
+          console.log(cord1);
           walk(val);
         }
         else if(key == 'ln') {
           console.log("es un lon");
           var val = obj[key];
           cord2 = val;
+          console.log(cord2);
           var latLng = new google.maps.LatLng(cord1,cord2);
           var marker = new google.maps.Marker({
             position: latLng,
             map: map
           });
-          console.log(val);
+          //console.log(val);
 
           walk(val);
         }
