@@ -60,14 +60,9 @@
      */
 
 
-     $sql = "select * from accion order by id asc limit 1";
-     foreach($this->_conn->query($sql)as $row)
-     {
-       $acc = $row['accion'];
-       $this->mostrarRespuesta($this->convertirJson($acc, 200);
-     }
-
-   }
+     $resultado = $this->_conn->query("select * from accion order by id asc limit 1")
+     $fila = $resultado->fetch_row();
+     $this->mostrarRespuesta($this->convertirJson($fila['accion']), 200);
 
  }
  $api = new GetAccion();
