@@ -60,7 +60,7 @@
      */
 
 
-     $resultado = $this->_conn->query("select * from accion order by id asc limit 1");
+     $sql = "select * from accion order by id asc limit 1";
      foreach($this->_conn->query($sql)as $row)
      {
        $acc = $row['accion'];
