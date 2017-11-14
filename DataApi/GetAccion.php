@@ -60,10 +60,10 @@
      */
 
 
-     $resultado = $this->_conn->query("select * from accion order by id asc limit 1")
+     $resultado = $this->_conn->query("select * from accion order by id asc limit 1");
      $fila = $resultado->fetch_row();
      $this->mostrarRespuesta($this->convertirJson($fila[1]), 200);
-}
+   }
 
  }
  $api = new GetAccion();
