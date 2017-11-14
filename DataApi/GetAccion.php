@@ -65,7 +65,7 @@
      $num = count($filas);
      if ($num > 0) {
        $respuesta['Data'] = $filas[0]['accion'];
-       $this->mostrarRespuesta($this->convertirJson($respuesta), 200);
+       $this->mostrarRespuesta($this->convertirJson('AA'), 200);
      }
      $this->mostrarRespuesta($this->devolverError(2), 204);
    }
