@@ -50,7 +50,7 @@
      return json_encode($data);
    }
 
-  private function getscore($email) {
+  private function getscore() {
      if ($_SERVER['REQUEST_METHOD'] != "GET") {
        $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
      }
