@@ -64,7 +64,7 @@
      $filas = $query->fetchAll(PDO::FETCH_ASSOC);
      $num = count($filas);
      if ($num > 0) {
-       $respuesta['Data'] = $filas;
+       $respuesta['Data'] = $filas[0];
        $this->mostrarRespuesta($this->convertirJson($respuesta), 200);
      }
      $this->mostrarRespuesta($this->devolverError(2), 204);
