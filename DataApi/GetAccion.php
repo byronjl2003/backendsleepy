@@ -58,10 +58,12 @@
      /*
      select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = 'byronjl2003@gmail.com') T ORDER BY T.fecha DESC LIMIT 1;
      */
-     $this->mostrarRespuesta($this->convertirJson('HOLA'), 200);
-     $query = $this->_conn->query("select * from accion order by id asc limit 1");
+     $query = $this->_conn->prepare("select * from accion order by id asc limit 1;");
+     //$query->bindValue(1,$email, PDO::PARAM_STR);
+     $query->execute();
      $filas = $query->fetchAll(PDO::FETCH_ASSOC);
-     $num = count($filas);
+
+      $num = count($filas);
      if ($num > 0) {
 
        $respuesta['Data'] = $filas;
