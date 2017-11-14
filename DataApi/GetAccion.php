@@ -70,8 +70,11 @@
      $this->mostrarRespuesta($this->convertirJson($accionresp), 200);
 */
 $query->execute();
-$filas = $query->fetchAll(PDO::FETCH_ASSOC);
+$filas = $query->fetch(PDO::FETCH_ASSOC);
+  $this->mostrarRespuesta($this->convertirJson($filas[1]), 200);
+
 $num = count($filas);
+
 if ($num > 0) {
   $respuesta['Data'] = $filas;
   $this->mostrarRespuesta($this->convertirJson($respuesta), 200);
