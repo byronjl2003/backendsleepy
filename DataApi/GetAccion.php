@@ -60,27 +60,10 @@
      */
 
 
-
-     $query = $this->_conn->prepare("select * from accion order by id asc limit 1;");
-/*
-     $query->execute();
-     $fila = mysql_fetch_row($query);
-     $idresp = $fila[0];
-     $accionresp = $fila[1];
-     $this->mostrarRespuesta($this->convertirJson($accionresp), 200);
-*/
-$query->execute();
-$filas = $query->fetch(PDO::FETCH_ASSOC);
-  $this->mostrarRespuesta($this->convertirJson($filas[1]), 200);
-
-$num = count($filas);
-
-if ($num > 0) {
-  $respuesta['Data'] = $filas;
-  $this->mostrarRespuesta($this->convertirJson($respuesta), 200);
+     $resultado = $this->_conn->query("select * from accion order by id asc limit 1")
+     $fila = $resultado->fetch_row();
+     $this->mostrarRespuesta($this->convertirJson($fila[1]), 200);
 }
-$this->mostrarRespuesta($this->devolverError(2), 204);
-   }
 
  }
  $api = new GetAccion();
