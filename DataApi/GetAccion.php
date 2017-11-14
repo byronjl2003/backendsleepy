@@ -54,7 +54,7 @@
      if ($_SERVER['REQUEST_METHOD'] != "GET") {
        $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
      }
-     
+
      /*
      select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = 'byronjl2003@gmail.com') T ORDER BY T.fecha DESC LIMIT 1;
      */
@@ -62,12 +62,20 @@
 
 
      $query = $this->_conn->prepare("select * from accion order by id asc limit 1;");
+/*
      $query->execute();
      $fila = mysql_fetch_row($query);
      $idresp = $fila[0];
      $accionresp = $fila[1];
      $this->mostrarRespuesta($this->convertirJson($accionresp), 200);
-
+*/
+filas = $query->fetchAll(PDO::FETCH_ASSOC);
+$num = count($filas);
+if ($num > 0) {
+  $respuesta['Data'] = $filas;
+  $this->mostrarRespuesta($this->convertirJson($respuesta), 200);
+}
+$this->mostrarRespuesta($this->devolverError(2), 204);
    }
 
  }
