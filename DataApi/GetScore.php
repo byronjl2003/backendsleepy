@@ -123,6 +123,6 @@ $this->mostrarRespuesta($this->devolverError(2), 204);
    }
 
  }
- $api = new GetLuz();
+ $api = new GetScore();
  $api->procesarLLamada();
  ?>
