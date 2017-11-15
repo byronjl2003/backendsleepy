@@ -59,7 +59,7 @@
        $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
      }
 
-     $this->mostrarRespuesta('SCORE', 200);
+     //$this->mostrarRespuesta('SCORE', 200);
 
      $sql = "
          SELECT (Z.scoreluz + Z.scoresonido + Z.scoretemp + Z.scorehumedad) as score FROM (
