@@ -58,7 +58,7 @@
      select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = 'byronjl2003@gmail.com') T ORDER BY T.fecha DESC LIMIT 1;
      */
 
-     $query = $this->_conn->prepare("select T.humedad FROM(select D.fecha,D.humedad FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = ?) T ORDER BY T.fecha DESC LIMIT 1;");
+     $query = $this->_conn->prepare("select T.humedad FROM(select D.fecha,D.humedad FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = ?) T ORDER BY T.fecha DESC LIMIT 5;");
      $query->bindValue(1,$email, PDO::PARAM_STR);
      $query->execute();
      $filas = $query->fetchAll(PDO::FETCH_ASSOC);
