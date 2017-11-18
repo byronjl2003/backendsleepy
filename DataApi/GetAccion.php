@@ -82,7 +82,11 @@
        //$respuesta['Data'] = $filas[0]['accion'];
        $this->mostrarRespuesta($resp, 200);
      }
-     $this->mostrarRespuesta($this->devolverError(2), 204);
+     else {
+       $this->mostrarRespuesta('z', 204);
+     }
+
+
    }
 
  }
