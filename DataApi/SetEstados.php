@@ -60,7 +60,7 @@
        $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
      }
 
-     $query = $this->_conn->prepare("INSERT INTO estados VALUES(1,?,?,?,?);");
+     $query = $this->_conn->prepare("UPDATE estados SET esonido = ?, etemp = ?, eluz = ?, emov = ? WHERE id = 1;");
      $query->bindValue(1,$esonido, PDO::PARAM_STR);
      $query->bindValue(2,$etemp, PDO::PARAM_STR);
      $query->bindValue(3,$eluz, PDO::PARAM_STR);
