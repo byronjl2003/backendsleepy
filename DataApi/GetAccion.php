@@ -64,14 +64,23 @@
      $filas = $query->fetchAll(PDO::FETCH_ASSOC);
      $num = count($filas);
      if ($num > 0) {
-
-       for(int i=0;i<$num;i++)
+       $resp = '';
+       for($i=0;$i<$num;$i++)
        {
-         
-       }
+          $resp = $resp . $filas[$i]['accion'];
+          $id =  $filas[$i]['id'];
+          $query = $this->_conn->prepare("delete from accion where id = ?;");
+          $query->bindValue(1,$id, PDO::PARAM_INT);
+          $query->execute();
 
+          if($i != $num -1)
+          {
+            $resp = $resp . ',';
+          }
+
+       }
        //$respuesta['Data'] = $filas[0]['accion'];
-       $this->mostrarRespuesta($num, 200);
+       $this->mostrarRespuesta($resp, 200);
      }
      $this->mostrarRespuesta($this->devolverError(2), 204);
    }
