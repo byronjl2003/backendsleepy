@@ -69,7 +69,7 @@
        if ($_SERVER['REQUEST_METHOD'] != "POST") {
          $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
        }
-       /*
+
        $query = $this->_conn->prepare(
         "START TRANSACTION;
           SELECT @usuario := id FROM usuario WHERE email = ".$email.";
@@ -79,8 +79,8 @@
           INSERT INTO master_det(id, id_user)
           VALUES (@nuevadata,  @usuario);
           COMMIT;");
-          */
 
+/*
           $query = $this->_conn->prepare("INSERT INTO data(fecha, temperatura, humedad, movimiento, luz, sonido, ronquido) values(NOW()-INTERVAL 6 HOUR,?,?,?,?,?,?)");
           $query->bindValue(1,$temp, PDO::PARAM_INT);
           $query->bindValue(2,$hume, PDO::PARAM_INT);
@@ -88,6 +88,7 @@
           $query->bindValue(4,$luz, PDO::PARAM_INT);
           $query->bindValue(5,$sonido, PDO::PARAM_INT);
           $query->bindValue(6,$ronq, PDO::PARAM_INT);
+*/
        $query->execute();
           $resp = array('estado' => "correcto",'para1'=>$email,'para12'=>$temp,'para13'=>$hume,'para14'=>$luz,'para15'=>$sonido,'para16'=>$mov,'para17'=>$ronq);
           $this->mostrarRespuesta($this->convertirJson($resp), 200);
