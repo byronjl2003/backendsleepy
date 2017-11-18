@@ -70,7 +70,7 @@
          $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
        }
 
-       $query = $this->_conn->prepare(
+       //$query = $this->_conn->prepare(
 /*
         "START TRANSACTION;
           SELECT @usuario := id FROM usuario WHERE email = ".$email.";
