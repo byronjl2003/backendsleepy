@@ -66,7 +66,7 @@
      if ($num > 0) {
 
        //$respuesta['Data'] = $filas[0]['accion'];
-       $this->mostrarRespuesta($filas[0]['accion'], 200);
+       $this->mostrarRespuesta($num, 200);
      }
      $this->mostrarRespuesta($this->devolverError(2), 204);
    }
