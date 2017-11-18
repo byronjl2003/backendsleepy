@@ -1,10 +1,10 @@
   <?php
     require_once("Rest.php");
     class SaveData extends Rest {
-     const servidor = "localhost";
-     const usuario_db = "root";
-     const pwd_db = "Birlolo57521814";
-     const nombre_db = "Arqui2";
+      const servidor = "localhost";
+      const usuario_db = "root";
+      const pwd_db = "Birlolo57521814";
+      const nombre_db = "sf";
      private $_conn = NULL;
      private $_metodo;
      private $_argumentos;
@@ -43,6 +43,7 @@
           ->sonido: double
           ->mov: int
         */
+        //http://45.55.148.193/sf/DataApi/SaveData.php?email=churro@gmail.com&temp=99.99&hume=99.99&luz=1&sonido=&,mov=1,ronq=0
         $email = $_REQUEST['email'];
         $temp = $_REQUEST['temp'];
         $hume = $_REQUEST['hume'];
