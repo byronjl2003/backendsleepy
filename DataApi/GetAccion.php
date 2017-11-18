@@ -58,7 +58,7 @@
      select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = 'byronjl2003@gmail.com') T ORDER BY T.fecha DESC LIMIT 1;
      */
 
-     $query = $this->_conn->prepare("select * from accion limit 3;");
+     $query = $this->_conn->prepare("select * from accion limit 1;");
      //$query->bindValue(1,$email, PDO::PARAM_STR);
      $query->execute();
      $filas = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -69,14 +69,10 @@
        {
           $resp = $resp . $filas[$i]['accion'];
           $id =  $filas[$i]['id'];
-          $query = $this->_conn->prepare("delete from accion where id = ?;");
-          $query->bindValue(1,$id, PDO::PARAM_INT);
-          $query->execute();
+          //$query = $this->_conn->prepare("delete from accion where id = ?;");
+          //$query->bindValue(1,$id, PDO::PARAM_INT);
+          //$query->execute();
 
-          if($i != $num -1)
-          {
-            $resp = $resp . ',';
-          }
 
        }
        //$respuesta['Data'] = $filas[0]['accion'];
