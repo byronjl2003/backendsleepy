@@ -50,11 +50,15 @@
         $luz = $_REQUEST['luz'];
         $sonido = $_REQUEST['sonido'];
         $mov = $_REQUEST['mov'];
-        $ronq = $_REQUEST['ronq'];
-        if(!$ronq){
+        $ronq = 0;
+        /*if(!$ronq){
           $ronq = 0;
         }
-        save_data($email, $temp, $hume, $luz, $sonido, $mov, $ronq);
+        */
+        $array_ = array(0 =>$email,1 =>$temp,2 =>$hume,3 =>$luz,4 =>$sonido,5=>$mov,6=>$ronq);
+        call_user_func_array(array($this,"save_data"),$array_);
+
+        //save_data($email, $temp, $hume, $luz, $sonido, $mov, $ronq);
      }
 
      private function convertirJson($data) {
@@ -65,6 +69,7 @@
        if ($_SERVER['REQUEST_METHOD'] != "POST") {
          $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
        }
+       /*
        $query = $this->_conn->prepare(
         "START TRANSACTION;
           SELECT @usuario := id FROM usuario WHERE email = ".$email.";
@@ -74,6 +79,15 @@
           INSERT INTO master_det(id, id_user)
           VALUES (@nuevadata,  @usuario);
           COMMIT;");
+          */
+
+          $query = $this->_conn->prepare("INSERT INTO data(fecha, temperatura, humedad, movimiento, luz, sonido, ronquido) values(NOW()-INTERVAL 6 HOUR,?,?,?,?,?,?)");
+          $query->bindValue(1,$temp, PDO::PARAM_STR);
+          $query->bindValue(2,$hume, PDO::PARAM_STR);
+          $query->bindValue(3,$mov, PDO::PARAM_STR);
+          $query->bindValue(4,$luz, PDO::PARAM_STR);
+          $query->bindValue(5,$sonido, PDO::PARAM_STR);
+          $query->bindValue(6,$ronq, PDO::PARAM_STR);
        $query->execute();
           $resp = array('estado' => "correcto");
           $this->mostrarRespuesta($this->convertirJson($resp), 200);
