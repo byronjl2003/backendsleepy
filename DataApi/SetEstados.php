@@ -42,7 +42,7 @@
      $eluz_ = $_REQUEST['eluz'];
      $emov_ = $_REQUEST['emov'];
 
-     $array_ = array(0 =>$esonido_,1 =>$etemp_,2 =>$eluz_,3s =>$emov_);
+     $array_ = array(0 =>$esonido_,1 =>$etemp_,2 =>$eluz_,3 =>$emov_);
      call_user_func_array(array($this,"setaccion"),$array_);
 
      //call_user_func(array($this,"gettemp"));
