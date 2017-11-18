@@ -1,0 +1,16 @@
+END-POINT Arduino-Nube:
+
+->SaveData:
+Guardar datos de los sensores en la tabla data.
+En la tabla master_det enlazar el registro anterior con el email.
+#para la columna ronquido pongalen 0 como dato
+	->POST
+	->Nombre Archivo: SaveData.php
+	->Parametros:
+		->email: varchar
+		->temp:double
+		->hume: double
+		->luz: double
+		->sonido: double
+		->mov: int
+	->Ejemplo URI: http://45.55.148.193/sf/DataApi/SaveData.php?email=churro@gmail.com&temp=30&hume=40		
