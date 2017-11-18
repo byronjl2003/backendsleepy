@@ -82,7 +82,7 @@
           COMMIT;");
 */
 
-/*
+
           $query = $this->_conn->prepare("INSERT INTO data(fecha, temperatura, humedad, movimiento, luz, sonido, ronquido) values(NOW()-INTERVAL 6 HOUR,?,?,?,?,?,?)");
           $query->bindValue(1,$temp, PDO::PARAM_INT);
           $query->bindValue(2,$hume, PDO::PARAM_INT);
@@ -92,22 +92,15 @@
           $query->bindValue(6,$ronq, PDO::PARAM_INT);
 
        $query->execute();
-       $last_id = $this->_conn->insert_id;
+       $query = $this->_conn->prepare("SELECT LAST_INSERT_ID() as id");
+       //$query->bindValue(1,$email, PDO::PARAM_STR);
+       $query->execute();
+       $filas = $query->fetchAll(PDO::FETCH_ASSOC);
+       $last_id = $filas[0]['id'];
+
           $resp = array('estado' => "correcto",'para1'=>$email,'para12'=>$temp,'para13'=>$hume,'para14'=>$luz,'para15'=>$sonido,'para16'=>$mov,'para17'=>$ronq,'ID'=> $last_id);
           $this->mostrarRespuesta($this->convertirJson($resp), 200);
-*/
 
-
-$sql = "INSERT INTO data(fecha, temperatura, humedad, movimiento, luz, sonido, ronquido) values(NOW()-INTERVAL 6 HOUR,3,3,3,3,3,3)";
-$last_id=777;
-if ($this->_conn->query($sql) === TRUE) {
-$last_id = $this->_conn->insert_id;
-//echo "New record created successfully. Last inserted ID is: " . $last_id;
-} else {
-//echo "Error: " . $sql . "<br>" . $conn->error;
-}
-$resp = array('estado' => "correcto",'para1'=>$email,'para12'=>$temp,'para13'=>$hume,'para14'=>$luz,'para15'=>$sonido,'para16'=>$mov,'para17'=>$ronq,'ID'=> $last_id);
-$this->mostrarRespuesta($this->convertirJson($resp), 200);
 
      }
 
