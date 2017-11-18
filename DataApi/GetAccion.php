@@ -69,9 +69,9 @@
        {
           $resp = $resp . $filas[0]['accion'];
           $id =  $filas[0]['id'];
-          $query = $this->_conn->prepare("delete from accion where id = ?;");
-          $query->bindValue(1,$id, PDO::PARAM_INT);
-          $query->execute();
+          //$query = $this->_conn->prepare("delete from accion where id = ?;");
+          //$query->bindValue(1,$id, PDO::PARAM_INT);
+          //$query->execute();
           if(i != $num -1)
           {
             $resp = $resp . ',';
