@@ -91,8 +91,8 @@
           $query->bindValue(6,$ronq, PDO::PARAM_INT);
 
        $query->execute();
-       //$last_id = $this->_conn->insert_id;
-          $resp = array('estado' => "correcto",'para1'=>$email,'para12'=>$temp,'para13'=>$hume,'para14'=>$luz,'para15'=>$sonido,'para16'=>$mov,'para17'=>$ronq,'ID'=> 7777);
+       $last_id = $this->_conn->insert_id;
+          $resp = array('estado' => "correcto",'para1'=>$email,'para12'=>$temp,'para13'=>$hume,'para14'=>$luz,'para15'=>$sonido,'para16'=>$mov,'para17'=>$ronq,'ID'=> $last_id);
           $this->mostrarRespuesta($this->convertirJson($resp), 200);
 
      }
