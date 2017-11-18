@@ -61,7 +61,8 @@
 
      //$this->mostrarRespuesta('SCORE', 200);
 
-     $sql = "SELECT avg(T.temperatura) as temperatura,avg(T.humedad) as humedad,avg(T.luz) as luz, avg(T.sonido) as sonido FROM(select D.fecha,D.temperatura,D.humedad,D.luz,D.sonido FROM master_det M 	INNER JOIN data D ON M.id = D.id INNER JOIN usuario U ON U.id = M.id_user WHERE U.email = 'churro@gmail.com' and D.fecha between CAST((NOW()-INTERVAL 30 HOUR) AS char) and CAST((NOW()-INTERVAL 6 HOUR) AS char)) T";
+     $sql = "SELECT avg(T.temperatura) as temperatura,avg(T.humedad) as humedad,avg(T.luz) as luz, avg(T.sonido) as sonido,avg(T.movimiento) as movimiento FROM(select D.fecha,D.temperatura,D.humedad,D.luz,D.sonido,D.movimiento FROM master_det M 	INNER JOIN data D ON M.id = D.id INNER JOIN usuario U ON U.id = M.id_user WHERE U.email = 'churro@gmail.com' and D.fecha between CAST((NOW()-INTERVAL 30 HOUR) AS char) and CAST((NOW()-INTERVAL 6 HOUR) AS char)) T";
+
 $query = $this->_conn->prepare($sql);
 $query->bindValue(1,$email, PDO::PARAM_STR);
 
