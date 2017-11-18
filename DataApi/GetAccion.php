@@ -68,7 +68,7 @@
        for(int i=0;i<$num;i++)
        {
           $resp = $resp . $filas[i]['accion'];
-          //$id =  $filas[i]['id'];
+        //  //$id =  $filas[i]['id'];
           //$query = $this->_conn->prepare("delete from accion where id = ?;");
           //$query->bindValue(1,$id, PDO::PARAM_INT);
           //$query->execute();
@@ -80,7 +80,7 @@
 */
        }
        //$respuesta['Data'] = $filas[0]['accion'];
-       $this->mostrarRespuesta($resp, 200);
+       $this->mostrarRespuesta($this->convertirJson($filas), 200);
      }
      $this->mostrarRespuesta($this->devolverError(2), 204);
    }
