@@ -52,7 +52,7 @@
    }
 
   private function setaccion($accion) {
-     if ($_SERVER['REQUEST_METHOD'] != "POST") {
+     if ($_SERVER['REQUEST_METHOD'] != "GET") {
        $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
      }
 
