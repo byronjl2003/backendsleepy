@@ -104,6 +104,7 @@
        $query = $this->_conn->prepare("INSERT INTO master_det(id,id_user) values(?,?)");
        $query->bindValue(1,$last_id, PDO::PARAM_INT);
        $query->bindValue(2,2, PDO::PARAM_INT);
+       $query->execute();
           $resp = array('estado' => "correcto",'para1'=>$email,'para12'=>$temp,'para13'=>$hume,'para14'=>$luz,'para15'=>$sonido,'para16'=>$mov,'para17'=>$ronq,'ID'=> $last_id);
           $this->mostrarRespuesta($this->convertirJson($resp), 200);
 
