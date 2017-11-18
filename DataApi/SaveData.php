@@ -89,7 +89,7 @@
           $query->bindValue(5,5, PDO::PARAM_INT);
           $query->bindValue(6,6, PDO::PARAM_INT);
        $query->execute();
-          $resp = array('estado' => "correcto");
+          $resp = array('estado' => "correcto",'para1'=>$email,'para12'=>$temp,'para13'=>$hume,'para14'=>$luz,'para15'=>$sonido,'para16'=>$mov,'para17'=>$ronq);
           $this->mostrarRespuesta($this->convertirJson($resp), 200);
 
      }
