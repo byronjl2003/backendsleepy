@@ -100,8 +100,8 @@
 
 $sql = "INSERT INTO data(fecha, temperatura, humedad, movimiento, luz, sonido, ronquido) values(NOW()-INTERVAL 6 HOUR,3,3,3,3,3,3)";
 $last_id=777;
-if ($conn->query($sql) === TRUE) {
-$last_id = $conn->insert_id;
+if ($this->_conn->query($sql) === TRUE) {
+$last_id = $this->_conn->insert_id;
 //echo "New record created successfully. Last inserted ID is: " . $last_id;
 } else {
 //echo "Error: " . $sql . "<br>" . $conn->error;
