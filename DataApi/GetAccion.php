@@ -79,7 +79,7 @@
        $this->mostrarRespuesta($resp, 200);
      }
      else {
-       $this->mostrarRespuesta('z', 204);
+       $this->mostrarRespuesta('z', 200);
      }
 
 
