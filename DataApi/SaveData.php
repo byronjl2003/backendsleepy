@@ -82,12 +82,12 @@
           */
 
           $query = $this->_conn->prepare("INSERT INTO data(fecha, temperatura, humedad, movimiento, luz, sonido, ronquido) values(NOW()-INTERVAL 6 HOUR,?,?,?,?,?,?)");
-          $query->bindValue(1,1, PDO::PARAM_INT);
-          $query->bindValue(2,2, PDO::PARAM_INT);
-          $query->bindValue(3,3, PDO::PARAM_INT);
-          $query->bindValue(4,4, PDO::PARAM_INT);
-          $query->bindValue(5,5, PDO::PARAM_INT);
-          $query->bindValue(6,6, PDO::PARAM_INT);
+          $query->bindValue(1,$temp, PDO::PARAM_INT);
+          $query->bindValue(2,$hume, PDO::PARAM_INT);
+          $query->bindValue(3,$mov, PDO::PARAM_INT);
+          $query->bindValue(4,$luz, PDO::PARAM_INT);
+          $query->bindValue(5,$sonido, PDO::PARAM_INT);
+          $query->bindValue(6,$ronq, PDO::PARAM_INT);
        $query->execute();
           $resp = array('estado' => "correcto",'para1'=>$email,'para12'=>$temp,'para13'=>$hume,'para14'=>$luz,'para15'=>$sonido,'para16'=>$mov,'para17'=>$ronq);
           $this->mostrarRespuesta($this->convertirJson($resp), 200);
