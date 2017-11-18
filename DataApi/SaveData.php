@@ -92,21 +92,21 @@
           $query->bindValue(6,$ronq, PDO::PARAM_INT);
 
        $query->execute();
-       $query = $this->_conn->prepare("SELECT LAST_INSERT_ID() as id");
+      // $query = $this->_conn->prepare("SELECT LAST_INSERT_ID() as id");
        //$query->bindValue(1,$email, PDO::PARAM_STR);
-       $query->execute();
-       $filas = $query->fetchAll(PDO::FETCH_ASSOC);
-       $last_id = $filas[0]['id'];
+       //$query->execute();
+       //$filas = $query->fetchAll(PDO::FETCH_ASSOC);
+       //$last_id = $filas[0]['id'];
        /*
        id int not null,
        id_user int not null,
        */
-       $query = $this->_conn->prepare("INSERT INTO master_det(id,id_user) values(?,?)");
-       $query->bindValue(1,$last_id, PDO::PARAM_INT);
-       $query->bindValue(2,2, PDO::PARAM_INT);
-       $query->execute();
-          $resp = array('estado' => "correcto",'para1'=>$email,'para12'=>$temp,'para13'=>$hume,'para14'=>$luz,'para15'=>$sonido,'para16'=>$mov,'para17'=>$ronq,'ID'=> $last_id);
-          $this->mostrarRespuesta($this->convertirJson($resp), 200);
+       //$query = $this->_conn->prepare("INSERT INTO master_det(id,id_user) values(?,?)");
+       //$query->bindValue(1,$last_id, PDO::PARAM_INT);
+       //$query->bindValue(2,2, PDO::PARAM_INT);
+       //$query->execute();
+          //$resp = array('estado' => "correcto",'para1'=>$email,'para12'=>$temp,'para13'=>$hume,'para14'=>$luz,'para15'=>$sonido,'para16'=>$mov,'para17'=>$ronq,'ID'=> $last_id);
+          $this->mostrarRespuesta('ok', 200);
 
 
      }
