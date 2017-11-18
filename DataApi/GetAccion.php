@@ -64,13 +64,8 @@
      $filas = $query->fetchAll(PDO::FETCH_ASSOC);
      $num = count($filas);
      if ($num > 0) {
-       /*$acciones = '';
-       for(int i = 0;i<$num;i++ )
-       {
 
-       }
-       */
-       $respuesta['Data'] = $filas[0]['accion'];
+       //$respuesta['Data'] = $filas[0]['accion'];
        $this->mostrarRespuesta('A,B,C', 200);
      }
      $this->mostrarRespuesta($this->devolverError(2), 204);
