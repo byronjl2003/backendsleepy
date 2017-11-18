@@ -65,6 +65,11 @@
      $num = count($filas);
      if ($num > 0) {
 
+       for(int i=0;i<$num;i++)
+       {
+         
+       }
+
        //$respuesta['Data'] = $filas[0]['accion'];
        $this->mostrarRespuesta($num, 200);
      }
