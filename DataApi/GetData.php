@@ -56,6 +56,10 @@
      }
 
      /*
+     CREATE TABLE estados(id int not null,esonido varchar(5),etemp varchar(5),eluz varchar(5),emov varchar(5),PRIMARY KEY (id));
+
+
+
      SELECT SUM(
         CASE
           WHEN P.luz <= 10 THEN (((P.luz - 0)/(10-0))*(25-18.76))+18.76
@@ -139,7 +143,7 @@
 
 
 
-    SELECT (Z.scoreluz + Z.scoresonido + Z.scoretemp + Z.scorehumedad) as score FROM ( 
+    SELECT (Z.scoreluz + Z.scoresonido + Z.scoretemp + Z.scorehumedad) as score FROM (
      SELECT
       CASE
         WHEN P.luz <= 10 THEN (((P.luz - 0)/(10-0))*(25-18.76))+18.76

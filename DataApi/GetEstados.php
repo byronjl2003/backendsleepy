@@ -1,6 +1,6 @@
 <?php
   require_once("Rest.php");
-  class GetHumedad extends Rest {
+  class GetEstados extends Rest {
    const servidor = "localhost";
    const usuario_db = "root";
    const pwd_db = "Birlolo57521814";
@@ -36,11 +36,12 @@
    }
    public function procesarLLamada() {
 
-     $email_ = $_REQUEST['email'];
-     $array_ = array(0 =>$email_);
-     call_user_func_array(array($this,"gethumedad"),$array_);
+     //$email_ = $_REQUEST['email'];
 
-     //call_user_func(array($this,"gettemp"));
+     //$array_ = array(0 =>$email_);
+     //call_user_func_array(array($this,"getlastfive"),$array_);
+
+     call_user_func(array($this,"getestados"));
 
 
 
@@ -50,27 +51,28 @@
      return json_encode($data);
    }
 
-  private function gethumedad($email) {
-     if ($_SERVER['REQUEST_METHOD'] != "GET") {
-       $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
-     }
-     /*
-     select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = 'byronjl2003@gmail.com') T ORDER BY T.fecha DESC LIMIT 1;
-     */
+  private function getestados() {
+    if ($_SERVER['REQUEST_METHOD'] != "GET") {
+      $this->mostrarRespuesta($this->convertirJson($this->devolverError(1)), 405);
+    }
+    /*
+    select T.temperatura FROM(select D.fecha,D.temperatura FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.correo = 'byronjl2003@gmail.com') T ORDER BY T.fecha DESC LIMIT 1;
+    */
 
-     $query = $this->_conn->prepare("select T.humedad FROM(select D.fecha,D.humedad FROM master_det M INNER JOIN data D ON M.id = D.id WHERE M.email = ?) T ORDER BY T.fecha DESC LIMIT 5;");
-     $query->bindValue(1,$email, PDO::PARAM_STR);
-     $query->execute();
-     $filas = $query->fetchAll(PDO::FETCH_ASSOC);
-     $num = count($filas);
-     if ($num > 0) {
-       $respuesta['Data'] = $filas;
-       $this->mostrarRespuesta($this->convertirJson($respuesta), 200);
-     }
-     $this->mostrarRespuesta($this->devolverError(2), 204);
-   }
+    $query = $this->_conn->prepare("select * from estados");
+    //$query->bindValue(1,$email, PDO::PARAM_STR);
+
+    $query->execute();
+    $filas = $query->fetchAll(PDO::FETCH_ASSOC);
+    $num = count($filas);
+    if ($num > 0) {
+      $respuesta['Data'] = $filas;
+      $this->mostrarRespuesta($this->convertirJson($respuesta), 200);
+    }
+    $this->mostrarRespuesta($this->devolverError(2), 204);
+    }
 
  }
- $api = new GetHumedad();
+ $api = new GetEstados();
  $api->procesarLLamada();
  ?>
