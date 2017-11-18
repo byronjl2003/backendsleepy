@@ -71,10 +71,10 @@
          WHEN P.luz > 768 THEN 6.25
        END as scoreluz,
        CASE
-         WHEN P.sonido <=255 THEN (((P.sonido-0)/(255-0))*(25-18.75))+18.76
-         WHEN P.sonido > 255 and P.sonido <=511 THEN (((P.sonido-256)/(511-256))*(18.75-12.51))+12.51
-         WHEN P.sonido > 511 and P.sonido <=767 THEN (((P.sonido-512)/(767-512))*(12.50-6.26))+6.26
-         WHEN P.sonido < 768 and P.sonido <=1023 THEN (((P.sonido-768)/(1023-768))*(6.25))
+         WHEN P.sonido <=350 THEN (((P.sonido-40)/(350-40))*(25-18.75))+18.76
+         WHEN P.sonido > 351 and P.sonido <=500 THEN (((P.sonido-351)/(500-351))*(18.75-12.51))+12.51
+         WHEN P.sonido > 501 and P.sonido <=600 THEN (((P.sonido-501)/(600-501))*(12.50-6.26))+6.26
+         WHEN P.sonido < 601 and P.sonido <=1023 THEN (((P.sonido-600)/(1023-600))*(6.25))
        END as scoresonido,
        CASE
          WHEN P.temperatura <= 12 THEN 6.25
