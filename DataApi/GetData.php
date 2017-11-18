@@ -139,7 +139,7 @@
 
 
 
-    SELECT (Z.scoreluz + Z.scoresonido + Z.scoretemp + Z.scorehumedad) as score FROM (
+    SELECT (Z.scoreluz + Z.scoresonido + Z.scoretemp + Z.scorehumedad) as score FROM ( 
      SELECT
       CASE
         WHEN P.luz <= 10 THEN (((P.luz - 0)/(10-0))*(25-18.76))+18.76
@@ -168,15 +168,17 @@
         WHEN P.humedad > 70 and P.humedad <=80 THEN (((P.humedad- 71)/(80-71))*(18.75-12.51))+ 12.51
         WHEN P.humedad > 80 THEN (((P.humedad- 81)/(100-81))*(6.25))
       END as scorehumedad
-      FROM(SELECT avg(T.temperatura) as temperatura,avg(T.humedad) as humedad,avg(T.luz) as luz, avg(T.sonido) as sonido FROM(select D.fecha,D.temperatura,D.humedad,D.luz,D.sonido FROM master_det M 	INNER JOIN data D ON M.id = D.id INNER JOIN usuario U ON U.id = M.id_user WHERE U.email = 'churro@gmail.com' and D.fecha between ('2017-11-15'-INTERVAL 24 HOUR) and '2017-11-15') T) P
+      FROM(SELECT avg(T.temperatura) as temperatura,avg(T.humedad) as humedad,avg(T.luz) as luz, avg(T.sonido) as sonido FROM(select D.fecha,D.temperatura,D.humedad,D.luz,D.sonido FROM master_det M 	INNER JOIN data D ON M.id = D.id INNER JOIN usuario U ON U.id = M.id_user WHERE U.email = 'churro@gmail.com' and D.fecha between CAST((NOW()-INTERVAL 30 HOUR) AS char) and CAST((NOW()-INTERVAL 6 HOUR) AS char)) T) P
       ) Z ;
 
 
+SELECT avg(T.temperatura) as temperatura,avg(T.humedad) as humedad,avg(T.luz) as luz, avg(T.sonido) as sonido FROM(select D.fecha,D.temperatura,D.humedad,D.luz,D.sonido FROM master_det M 	INNER JOIN data D ON M.id = D.id INNER JOIN usuario U ON U.id = M.id_user WHERE U.email = 'churro@gmail.com' and D.fecha between CAST((NOW()-INTERVAL 30 HOUR) AS char) and CAST((NOW()-INTERVAL 6 HOUR) AS char)) T
+
+SELECT avg(T.temperatura) as temperatura,avg(T.humedad) as humedad,avg(T.luz) as luz, avg(T.sonido) as sonido FROM(select D.fecha,D.temperatura,D.humedad,D.luz,D.sonido FROM master_det M 	INNER JOIN data D ON M.id = D.id INNER JOIN usuario U ON U.id = M.id_user WHERE U.email = 'churro@gmail.com' and D.fecha between ('2017-11-17'-INTERVAL 24 HOUR) and '2017-11-17') T;
 
 
 
-
-
+menor >mayor
 
       SELECT
       CASE
